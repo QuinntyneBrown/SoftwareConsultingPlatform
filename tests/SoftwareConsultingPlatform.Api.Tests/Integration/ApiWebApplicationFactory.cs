@@ -17,6 +17,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
             // Remove existing DbContext registration
             services.RemoveAll(typeof(DbContextOptions<SoftwareConsultingPlatformContext>));
             services.RemoveAll(typeof(SoftwareConsultingPlatformContext));
+            services.RemoveAll(typeof(ITenantContext));
 
             // Add InMemory database for testing
             services.AddDbContext<SoftwareConsultingPlatformContext>(options =>
@@ -26,6 +27,15 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
             
             services.AddScoped<ISoftwareConsultingPlatformContext>(sp => 
                 sp.GetRequiredService<SoftwareConsultingPlatformContext>());
+            
+            // Add mock tenant context with a default test tenant
+            services.AddScoped<ITenantContext>(sp => new TestTenantContext());
         });
     }
 }
+
+public class TestTenantContext : ITenantContext
+{
+    public Guid TenantId { get; } = Guid.Parse("00000000-0000-0000-0000-000000000001");
+}
+

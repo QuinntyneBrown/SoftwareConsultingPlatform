@@ -18,4 +18,22 @@ public class RefreshToken
 
     // Navigation property
     public User User { get; set; } = null!;
+
+    // Private constructor for EF Core
+    private RefreshToken() { }
+
+    public RefreshToken(Guid userId, Guid tenantId, string token, DateTime expiresAt)
+    {
+        RefreshTokenId = Guid.NewGuid();
+        UserId = userId;
+        TenantId = tenantId;
+        Token = token ?? throw new ArgumentNullException(nameof(token));
+        ExpiresAt = expiresAt;
+        CreatedAt = DateTime.UtcNow;
+    }
+
+    public void Revoke()
+    {
+        RevokedAt = DateTime.UtcNow;
+    }
 }

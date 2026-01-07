@@ -1,5 +1,8 @@
+using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SoftwareConsultingPlatform.Core;
 using SoftwareConsultingPlatform.Infrastructure;
 using SoftwareConsultingPlatform.Infrastructure.Services;
@@ -26,6 +29,33 @@ builder.Services.AddScoped<ITenantContext, TenantContext>();
 
 // Add MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+// Add JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secret = jwtSettings["Secret"] ?? "your-secret-key-min-32-characters-long-for-security";
+var issuer = jwtSettings["Issuer"] ?? "SoftwareConsultingPlatform";
+var audience = jwtSettings["Audience"] ?? "SoftwareConsultingPlatform";
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
+    };
+});
+
+builder.Services.AddAuthorization();
 
 // Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
