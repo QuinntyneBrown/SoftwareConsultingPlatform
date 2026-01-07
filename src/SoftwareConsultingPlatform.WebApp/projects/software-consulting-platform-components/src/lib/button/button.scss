@@ -1,0 +1,212 @@
+@import '../styles/tokens';
+@import '../styles/mixins';
+
+.sc-button {
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  font-family: $font-family-base;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wide;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all $transition-base;
+  position: relative;
+  min-width: 120px;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include focus-visible;
+
+  // Disabled state
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Size variants
+  &--small {
+    height: 32px;
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-sm;
+  }
+
+  &--medium {
+    height: 40px;
+    padding: $spacing-md $spacing-2xl;
+    font-size: $font-size-base;
+    border-radius: $border-radius-md;
+  }
+
+  &--large {
+    height: 48px;
+    padding: $spacing-lg $spacing-3xl;
+    font-size: $font-size-md;
+    border-radius: $border-radius-lg;
+  }
+
+  // Full width
+  &--full-width {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  // Primary variant
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-hover;
+      transform: translateY(-2px);
+      box-shadow: $shadow-primary;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $color-primary-active;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    &:disabled {
+      background-color: $color-gray-200;
+      color: $color-gray-400;
+    }
+  }
+
+  // Secondary variant
+  &--secondary {
+    background-color: $color-white;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-light;
+      border-color: $color-primary-hover;
+      transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+      background-color: $color-primary-lighter;
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background-color: $color-gray-50;
+      color: $color-gray-300;
+      border-color: $color-gray-200;
+    }
+  }
+
+  // Tertiary/Ghost variant
+  &--tertiary {
+    background-color: transparent;
+    color: $color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-light;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $color-primary-lighter;
+    }
+
+    &:disabled {
+      color: $color-gray-300;
+    }
+  }
+
+  // Danger variant
+  &--danger {
+    background-color: $color-danger;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background-color: $color-danger-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      background-color: $color-danger-active;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    &:disabled {
+      background-color: $color-danger-light;
+      color: $color-danger-lighter;
+    }
+  }
+
+  // Success variant
+  &--success {
+    background-color: $color-success;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background-color: $color-success-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      background-color: $color-success-active;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  // Loading state
+  &--loading {
+    cursor: wait;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: $border-radius-full;
+    animation: sc-button-spin 1s linear infinite;
+  }
+}
+
+@keyframes sc-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive adjustments
+@include mobile {
+  .sc-button {
+    min-width: 100px;
+
+    &--large,
+    &--medium {
+      height: 44px; // Minimum touch target
+    }
+  }
+}
