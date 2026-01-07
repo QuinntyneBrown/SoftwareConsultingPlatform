@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:components": "ng build software-consulting-platform-components",
+    "build:app": "ng build software-consulting-platform",
+    "build": "npm run build:components && npm run build:app",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "ng run software-consulting-platform-components:storybook",
