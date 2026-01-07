@@ -1,0 +1,19 @@
+<article [class]="cardClasses">
+  <div *ngIf="imageUrl" class="sc-card__image-container">
+    <img [src]="imageUrl" [alt]="imageAlt" class="sc-card__image" />
+  </div>
+  
+  <div class="sc-card__content">
+    <span *ngIf="category" class="sc-card__category">{{ category }}</span>
+    
+    <h3 class="sc-card__title">{{ title }}</h3>
+    
+    <p *ngIf="description" class="sc-card__description">{{ description }}</p>
+    
+    <ng-content></ng-content>
+    
+    <a *ngIf="link" [href]="link" class="sc-card__link">
+      {{ linkText }} →
+    </a>
+  </div>
+</article>

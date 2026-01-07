@@ -1,0 +1,20 @@
+<article class="sc-testimonial">
+  <div *ngIf="rating" class="sc-testimonial__rating">
+    <span *ngFor="let star of stars" class="sc-testimonial__star sc-testimonial__star--filled">★</span>
+    <span *ngFor="let star of emptyStars" class="sc-testimonial__star">★</span>
+  </div>
+
+  <blockquote class="sc-testimonial__quote">
+    "{{ quote }}"
+  </blockquote>
+
+  <div class="sc-testimonial__author">
+    <img *ngIf="avatarUrl" [src]="avatarUrl" [alt]="authorName" class="sc-testimonial__avatar" />
+    <div class="sc-testimonial__author-info">
+      <div class="sc-testimonial__author-name">{{ authorName }}</div>
+      <div class="sc-testimonial__author-position">
+        {{ authorPosition }}<span *ngIf="authorCompany">, {{ authorCompany }}</span>
+      </div>
+    </div>
+  </div>
+</article>

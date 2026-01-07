@@ -1,0 +1,173 @@
+// Design Tokens
+// Color and spacing tokens for consistent design
+// No gradients should be defined here or in component SCSS
+
+// ============================================
+// Color Tokens
+// ============================================
+
+// Brand Colors
+$color-primary: #667eea;
+$color-primary-hover: #5568d3;
+$color-primary-active: #4c5fc7;
+$color-primary-light: #eef2ff;
+$color-primary-lighter: #e0e7ff;
+
+$color-secondary: #764ba2;
+
+// Semantic Colors
+$color-danger: #f56565;
+$color-danger-hover: #e53e3e;
+$color-danger-active: #c53030;
+$color-danger-light: #fed7d7;
+$color-danger-lighter: #fc8181;
+
+$color-success: #48bb78;
+$color-success-hover: #38a169;
+$color-success-active: #2f855a;
+
+$color-warning: #ffc107;
+
+// Neutral Colors
+$color-white: #ffffff;
+$color-black: #1a1a1a;
+
+$color-gray-50: #f7fafc;
+$color-gray-100: #edf2f7;
+$color-gray-200: #e2e8f0;
+$color-gray-300: #cbd5e0;
+$color-gray-400: #a0aec0;
+$color-gray-500: #718096;
+$color-gray-600: #4a5568;
+$color-gray-700: #2d3748;
+$color-gray-800: #1a202c;
+$color-gray-900: #171923;
+
+// Text Colors
+$color-text-primary: #1a1a1a;
+$color-text-secondary: #4a5568;
+$color-text-tertiary: #718096;
+$color-text-inverse: #ffffff;
+
+// Background Colors
+$color-bg-primary: #ffffff;
+$color-bg-secondary: #f7fafc;
+$color-bg-tertiary: #edf2f7;
+$color-bg-dark: #1a202c;
+
+// Border Colors
+$color-border-light: #e2e8f0;
+$color-border-medium: #cbd5e0;
+$color-border-dark: #a0aec0;
+
+// ============================================
+// Spacing Tokens
+// ============================================
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;
+$spacing-3xl: 32px;
+$spacing-4xl: 40px;
+$spacing-5xl: 48px;
+$spacing-6xl: 60px;
+$spacing-7xl: 80px;
+
+// ============================================
+// Typography Tokens
+// ============================================
+
+// Font Families
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+  'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+// Font Sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 15px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 22px;
+$font-size-3xl: 24px;
+$font-size-4xl: 28px;
+$font-size-5xl: 32px;
+$font-size-6xl: 36px;
+$font-size-7xl: 48px;
+$font-size-8xl: 60px;
+
+// Font Weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line Heights
+$line-height-tight: 1.2;
+$line-height-snug: 1.3;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.6;
+$line-height-loose: 1.8;
+
+// Letter Spacing
+$letter-spacing-tight: -0.5px;
+$letter-spacing-normal: 0px;
+$letter-spacing-wide: 0.3px;
+$letter-spacing-wider: 0.5px;
+$letter-spacing-widest: 1px;
+
+// ============================================
+// Border Radius Tokens
+// ============================================
+
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+$border-radius-2xl: 16px;
+$border-radius-full: 50%;
+
+// ============================================
+// Shadow Tokens
+// ============================================
+
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-base: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+$shadow-primary: 0 4px 12px rgba(102, 126, 234, 0.3);
+
+// ============================================
+// Transition Tokens
+// ============================================
+
+$transition-fast: 0.1s ease;
+$transition-base: 0.2s ease;
+$transition-slow: 0.3s ease;
+$transition-slower: 0.4s ease;
+$transition-slowest: 0.6s ease-out;
+
+// ============================================
+// Breakpoint Tokens
+// ============================================
+
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1200px;
+
+// ============================================
+// Z-Index Tokens
+// ============================================
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

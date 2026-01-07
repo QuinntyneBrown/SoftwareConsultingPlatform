@@ -1,0 +1,74 @@
+@import '../styles/tokens';
+@import '../styles/mixins';
+
+.sc-testimonial {
+  background: $color-bg-primary;
+  border-radius: $border-radius-xl;
+  padding: $spacing-3xl;
+  box-shadow: $shadow-base;
+  transition: all $transition-slow;
+
+  @include card-hover;
+
+  &__rating {
+    display: flex;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__star {
+    font-size: $font-size-xl;
+    color: $color-gray-200;
+
+    &--filled {
+      color: $color-warning;
+    }
+  }
+
+  &__quote {
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-loose;
+    font-style: italic;
+    color: $color-text-secondary;
+    margin: 0 0 $spacing-2xl 0;
+
+    @include mobile {
+      font-size: $font-size-base;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: $border-radius-full;
+    object-fit: cover;
+    border: 2px solid $color-white;
+    box-shadow: $shadow-sm;
+  }
+
+  &__author-info {
+    flex: 1;
+  }
+
+  &__author-name {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-normal;
+    color: $color-text-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__author-position {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-normal;
+    color: $color-text-tertiary;
+  }
+}

@@ -1,0 +1,159 @@
+@import '../styles/tokens';
+@import '../styles/mixins';
+
+.sc-case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 3), 1fr);
+  gap: $spacing-3xl;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sc-case-study {
+  background: $color-bg-primary;
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-base;
+  display: flex;
+  flex-direction: column;
+  transition: all $transition-slow;
+
+  @include card-hover;
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slower;
+
+    .sc-case-study:hover & {
+      transform: scale(1.05);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity $transition-slow;
+    color: $color-white;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+
+    .sc-case-study:hover & {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    padding: $spacing-2xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    flex: 1;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $color-primary;
+    background-color: $color-primary-light;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-sm;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-snug;
+    color: $color-text-primary;
+    margin: 0;
+    transition: color $transition-base;
+
+    .sc-case-study:hover & {
+      color: $color-primary;
+    }
+
+    @include mobile {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+    margin: 0;
+    @include line-clamp(2);
+    flex: 1;
+  }
+
+  &__metrics {
+    display: flex;
+    gap: $spacing-2xl;
+    padding: $spacing-lg 0;
+    border-top: 1px solid $color-border-light;
+  }
+
+  &__metric {
+    flex: 1;
+    text-align: center;
+  }
+
+  &__metric-value {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    color: $color-text-primary;
+  }
+
+  &__metric-label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    color: $color-text-tertiary;
+    margin-top: $spacing-xs;
+  }
+
+  &__link {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: auto;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

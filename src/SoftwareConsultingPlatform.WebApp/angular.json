@@ -97,6 +97,36 @@
           "options": {
             "tsConfig": "projects/software-consulting-platform-components/tsconfig.spec.json"
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/software-consulting-platform-components/.storybook",
+            "browserTarget": "software-consulting-platform-components:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/software-consulting-platform-components"
+            ],
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/software-consulting-platform-components/.storybook",
+            "browserTarget": "software-consulting-platform-components:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/software-consulting-platform-components"
+            ],
+            "outputDir": "dist/storybook/software-consulting-platform-components"
+          }
         }
       }
     }

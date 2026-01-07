@@ -1,0 +1,128 @@
+@import '../styles/tokens';
+@import '../styles/mixins';
+
+.sc-card {
+  background: $color-bg-primary;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-base;
+  overflow: hidden;
+  transition: all $transition-slow;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @include card-hover;
+
+  &__image-container {
+    width: 100%;
+    height: 225px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+
+    .sc-card:hover & {
+      transform: scale(1.05);
+    }
+  }
+
+  &__content {
+    padding: $spacing-2xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    flex: 1;
+  }
+
+  &__category {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-widest;
+    color: $color-primary;
+    background-color: $color-primary-light;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-sm;
+    align-self: flex-start;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-snug;
+    color: $color-text-primary;
+    margin: 0;
+    transition: color $transition-base;
+
+    .sc-card:hover & {
+      color: $color-primary;
+    }
+
+    @include mobile {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+    margin: 0;
+    flex: 1;
+    @include line-clamp(3);
+  }
+
+  &__link {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: auto;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Horizontal variant
+  &--horizontal {
+    flex-direction: row;
+
+    .sc-card__image-container {
+      width: 40%;
+      height: auto;
+    }
+
+    .sc-card__content {
+      width: 60%;
+    }
+
+    @include mobile {
+      flex-direction: column;
+
+      .sc-card__image-container,
+      .sc-card__content {
+        width: 100%;
+      }
+    }
+  }
+
+  // Minimal variant
+  &--minimal {
+    box-shadow: none;
+    border: 1px solid $color-border-light;
+
+    &:hover {
+      box-shadow: $shadow-md;
+      border-color: $color-border-medium;
+    }
+  }
+}

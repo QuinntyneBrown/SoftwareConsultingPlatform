@@ -1,0 +1,12 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="buttonClasses"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-busy]="loading"
+>
+  <span class="sc-button__content" [class.sc-button__content--hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+  <span *ngIf="loading" class="sc-button__spinner" aria-hidden="true"></span>
+</button>

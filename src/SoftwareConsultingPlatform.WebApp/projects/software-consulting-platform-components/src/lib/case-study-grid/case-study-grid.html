@@ -1,0 +1,31 @@
+<div class="sc-case-study-grid" [style.--columns]="columns">
+  <article *ngFor="let study of caseStudies" class="sc-case-study">
+    <div class="sc-case-study__image-container">
+      <img [src]="study.imageUrl" [alt]="study.imageAlt || study.title" class="sc-case-study__image" />
+      <div class="sc-case-study__overlay">
+        <span>View Project</span>
+      </div>
+    </div>
+
+    <div class="sc-case-study__content">
+      <div class="sc-case-study__tags">
+        <span *ngFor="let tag of study.tags" class="sc-case-study__tag">{{ tag }}</span>
+      </div>
+      
+      <h3 class="sc-case-study__title">{{ study.title }}</h3>
+      
+      <p class="sc-case-study__description">{{ study.description }}</p>
+      
+      <div *ngIf="study.metrics && study.metrics.length" class="sc-case-study__metrics">
+        <div *ngFor="let metric of study.metrics" class="sc-case-study__metric">
+          <div class="sc-case-study__metric-value">{{ metric.value }}</div>
+          <div class="sc-case-study__metric-label">{{ metric.label }}</div>
+        </div>
+      </div>
+      
+      <a [href]="study.link" class="sc-case-study__link">
+        View Case Study →
+      </a>
+    </div>
+  </article>
+</div>

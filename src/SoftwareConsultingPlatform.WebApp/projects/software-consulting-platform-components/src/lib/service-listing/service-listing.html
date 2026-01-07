@@ -1,0 +1,15 @@
+<div class="sc-service-listing" [style.--columns]="columns">
+  <article *ngFor="let service of services" class="sc-service-item">
+    <div *ngIf="service.icon" class="sc-service-item__icon">
+      {{ service.icon }}
+    </div>
+    <h3 class="sc-service-item__title">{{ service.title }}</h3>
+    <p class="sc-service-item__description">{{ service.description }}</p>
+    <ul *ngIf="service.features && service.features.length" class="sc-service-item__features">
+      <li *ngFor="let feature of service.features">✓ {{ feature }}</li>
+    </ul>
+    <a *ngIf="service.link" [href]="service.link" class="sc-service-item__link">
+      Learn More →
+    </a>
+  </article>
+</div>
