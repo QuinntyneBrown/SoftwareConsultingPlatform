@@ -1,1 +1,35 @@
-<p>navigation works!</p>
+<nav [class]="'sc-navigation' + (sticky ? ' sc-navigation--sticky' : '')">
+  <div class="sc-navigation__container">
+    <a href="/" class="sc-navigation__logo">
+      <img *ngIf="logoSrc" [src]="logoSrc" [alt]="logoAlt" />
+      <span *ngIf="!logoSrc">{{ logoAlt }}</span>
+    </a>
+
+    <div class="sc-navigation__desktop">
+      <a *ngFor="let link of links" [href]="link.href" class="sc-navigation__link">
+        {{ link.label }}
+      </a>
+      <div class="sc-navigation__cta">
+        <ng-content select="[cta]"></ng-content>
+      </div>
+    </div>
+
+    <button 
+      class="sc-navigation__mobile-toggle" 
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="sc-navigation__hamburger" [class.sc-navigation__hamburger--open]="mobileMenuOpen"></span>
+    </button>
+  </div>
+
+  <div class="sc-navigation__mobile" [class.sc-navigation__mobile--open]="mobileMenuOpen">
+    <a *ngFor="let link of links" [href]="link.href" class="sc-navigation__mobile-link">
+      {{ link.label }}
+    </a>
+    <div class="sc-navigation__mobile-cta">
+      <ng-content select="[cta]"></ng-content>
+    </div>
+  </div>
+</nav>

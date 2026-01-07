@@ -1,1 +1,30 @@
-<p>footer works!</p>
+<footer [class]="'sc-footer sc-footer--' + theme">
+  <div class="sc-footer__container">
+    <div class="sc-footer__top">
+      <div class="sc-footer__brand">
+        <img *ngIf="logoSrc" [src]="logoSrc" alt="Logo" class="sc-footer__logo" />
+        <p *ngIf="tagline" class="sc-footer__tagline">{{ tagline }}</p>
+      </div>
+
+      <div class="sc-footer__columns">
+        <div *ngFor="let column of columns" class="sc-footer__column">
+          <h3 class="sc-footer__column-title">{{ column.title }}</h3>
+          <ul class="sc-footer__links">
+            <li *ngFor="let link of column.links">
+              <a [href]="link.href" class="sc-footer__link">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc-footer__social">
+        <ng-content select="[social]"></ng-content>
+      </div>
+    </div>
+
+    <div class="sc-footer__bottom">
+      <p class="sc-footer__copyright">{{ copyright }}</p>
+      <ng-content select="[legal]"></ng-content>
+    </div>
+  </div>
+</footer>

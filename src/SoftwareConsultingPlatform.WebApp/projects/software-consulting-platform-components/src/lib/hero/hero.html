@@ -1,1 +1,9 @@
-<p>hero works!</p>
+<section class="sc-hero" [class.sc-hero--center]="alignment === 'center'" [style.background-image]="backgroundImage ? 'url(' + backgroundImage + ')' : null">
+  <div class="sc-hero__container">
+    <h1 class="sc-hero__headline">{{ headline }}</h1>
+    <p *ngIf="subheadline" class="sc-hero__subheadline">{{ subheadline }}</p>
+    <div class="sc-hero__actions">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

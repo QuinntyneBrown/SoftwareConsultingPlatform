@@ -1,1 +1,9 @@
-<p>cta-section works!</p>
+<section [class]="'sc-cta-section sc-cta-section--' + variant">
+  <div class="sc-cta-section__container">
+    <h2 class="sc-cta-section__headline">{{ headline }}</h2>
+    <p *ngIf="subheadline" class="sc-cta-section__subheadline">{{ subheadline }}</p>
+    <div class="sc-cta-section__actions">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

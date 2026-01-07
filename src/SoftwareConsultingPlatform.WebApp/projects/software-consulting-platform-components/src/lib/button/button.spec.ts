@@ -14,7 +14,6 @@ describe('Button', () => {
     fixture = TestBed.createComponent(Button);
     component = fixture.componentInstance;
     compiled = fixture.nativeElement;
-    await fixture.whenStable();
   });
 
   it('should create', () => {

@@ -1,0 +1,79 @@
+@import '../styles/tokens';
+@import '../styles/mixins';
+
+.sc-cta-section {
+  width: 100%;
+  padding: $spacing-7xl $spacing-4xl;
+  text-align: center;
+
+  @include mobile {
+    padding: $spacing-6xl $spacing-xl;
+  }
+
+  &__container {
+    @include container;
+    max-width: 700px;
+  }
+
+  &__headline {
+    font-size: $font-size-6xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    margin: 0 0 $spacing-lg 0;
+
+    @include mobile {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__subheadline {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-relaxed;
+    margin: 0 0 $spacing-3xl 0;
+
+    @include mobile {
+      font-size: $font-size-md;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &--standard {
+    background-color: $color-bg-secondary;
+
+    .sc-cta-section__headline {
+      color: $color-text-primary;
+    }
+
+    .sc-cta-section__subheadline {
+      color: $color-text-secondary;
+    }
+  }
+
+  &--brand {
+    background-color: $color-primary;
+
+    .sc-cta-section__headline,
+    .sc-cta-section__subheadline {
+      color: $color-white;
+    }
+  }
+
+  &--dark {
+    background-color: $color-bg-dark;
+
+    .sc-cta-section__headline {
+      color: $color-white;
+    }
+
+    .sc-cta-section__subheadline {
+      color: $color-gray-400;
+    }
+  }
+}
