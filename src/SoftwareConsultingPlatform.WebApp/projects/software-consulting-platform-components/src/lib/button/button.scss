@@ -35,21 +35,21 @@
     height: 32px;
     padding: $spacing-sm $spacing-lg;
     font-size: $font-size-sm;
-    border-radius: $border-radius-sm;
+    border-radius: $border-radius-md;
   }
 
   &--medium {
     height: 40px;
     padding: $spacing-md $spacing-2xl;
     font-size: $font-size-base;
-    border-radius: $border-radius-md;
+    border-radius: $border-radius-lg;
   }
 
   &--large {
     height: 48px;
     padding: $spacing-lg $spacing-3xl;
     font-size: $font-size-md;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-xl;
   }
 
   // Full width
@@ -131,7 +131,7 @@
     &:hover:not(:disabled) {
       background-color: $color-danger-hover;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+      box-shadow: $shadow-primary;
     }
 
     &:active:not(:disabled) {
@@ -154,7 +154,7 @@
     &:hover:not(:disabled) {
       background-color: $color-success-hover;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+      box-shadow: $shadow-md;
     }
 
     &:active:not(:disabled) {

@@ -6,59 +6,65 @@
 // Color Tokens
 // ============================================
 
-// Brand Colors
-$color-primary: #667eea;
-$color-primary-hover: #5568d3;
-$color-primary-active: #4c5fc7;
-$color-primary-light: #eef2ff;
-$color-primary-lighter: #e0e7ff;
+// Base Colors - Only these 4 colors are defined
+$color-coral: #e14658;
+$color-nave: #22252c;
+$color-mountain: #3f3250;
+$color-scrub: #c0b3a0;
 
-$color-secondary: #764ba2;
+// Brand Colors
+$color-primary: $color-coral;
+$color-primary-hover: darken($color-coral, 8%);
+$color-primary-active: darken($color-coral, 12%);
+$color-primary-light: lighten($color-coral, 35%);
+$color-primary-lighter: lighten($color-coral, 30%);
+
+$color-secondary: $color-mountain;
 
 // Semantic Colors
-$color-danger: #f56565;
-$color-danger-hover: #e53e3e;
-$color-danger-active: #c53030;
-$color-danger-light: #fed7d7;
-$color-danger-lighter: #fc8181;
+$color-danger: $color-coral;
+$color-danger-hover: darken($color-coral, 8%);
+$color-danger-active: darken($color-coral, 12%);
+$color-danger-light: lighten($color-coral, 35%);
+$color-danger-lighter: lighten($color-coral, 25%);
 
-$color-success: #48bb78;
-$color-success-hover: #38a169;
-$color-success-active: #2f855a;
+$color-success: $color-mountain;
+$color-success-hover: darken($color-mountain, 8%);
+$color-success-active: darken($color-mountain, 12%);
 
-$color-warning: #ffc107;
+$color-warning: $color-coral;
 
 // Neutral Colors
 $color-white: #ffffff;
-$color-black: #1a1a1a;
+$color-black: $color-nave;
 
-$color-gray-50: #f7fafc;
-$color-gray-100: #edf2f7;
-$color-gray-200: #e2e8f0;
-$color-gray-300: #cbd5e0;
-$color-gray-400: #a0aec0;
-$color-gray-500: #718096;
-$color-gray-600: #4a5568;
-$color-gray-700: #2d3748;
-$color-gray-800: #1a202c;
-$color-gray-900: #171923;
+$color-gray-50: lighten($color-scrub, 20%);
+$color-gray-100: lighten($color-scrub, 15%);
+$color-gray-200: lighten($color-scrub, 10%);
+$color-gray-300: $color-scrub;
+$color-gray-400: darken($color-scrub, 10%);
+$color-gray-500: darken($color-scrub, 20%);
+$color-gray-600: lighten($color-mountain, 10%);
+$color-gray-700: $color-mountain;
+$color-gray-800: lighten($color-nave, 5%);
+$color-gray-900: $color-nave;
 
 // Text Colors
-$color-text-primary: #1a1a1a;
-$color-text-secondary: #4a5568;
-$color-text-tertiary: #718096;
+$color-text-primary: $color-nave;
+$color-text-secondary: $color-mountain;
+$color-text-tertiary: $color-scrub;
 $color-text-inverse: #ffffff;
 
 // Background Colors
 $color-bg-primary: #ffffff;
-$color-bg-secondary: #f7fafc;
-$color-bg-tertiary: #edf2f7;
-$color-bg-dark: #1a202c;
+$color-bg-secondary: lighten($color-scrub, 20%);
+$color-bg-tertiary: lighten($color-scrub, 15%);
+$color-bg-dark: $color-nave;
 
 // Border Colors
-$color-border-light: #e2e8f0;
-$color-border-medium: #cbd5e0;
-$color-border-dark: #a0aec0;
+$color-border-light: lighten($color-scrub, 10%);
+$color-border-medium: $color-scrub;
+$color-border-dark: darken($color-scrub, 10%);
 
 // ============================================
 // Spacing Tokens
@@ -123,11 +129,11 @@ $letter-spacing-widest: 1px;
 // Border Radius Tokens
 // ============================================
 
-$border-radius-sm: 4px;
-$border-radius-md: 6px;
-$border-radius-lg: 8px;
-$border-radius-xl: 12px;
-$border-radius-2xl: 16px;
+$border-radius-sm: 44px;
+$border-radius-md: 46px;
+$border-radius-lg: 65px;
+$border-radius-xl: 20px;
+$border-radius-2xl: 20px;
 $border-radius-full: 50%;
 
 // ============================================
@@ -140,7 +146,7 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 $shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
 
-$shadow-primary: 0 4px 12px rgba(102, 126, 234, 0.3);
+$shadow-primary: 0 4px 12px rgba(225, 70, 88, 0.3);
 
 // ============================================
 // Transition Tokens
