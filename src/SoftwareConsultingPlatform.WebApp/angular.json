@@ -73,6 +73,32 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "software-consulting-platform-components": {
+      "projectType": "library",
+      "root": "projects/software-consulting-platform-components",
+      "sourceRoot": "projects/software-consulting-platform-components/src",
+      "prefix": "sc",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/software-consulting-platform-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/software-consulting-platform-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/software-consulting-platform-components/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

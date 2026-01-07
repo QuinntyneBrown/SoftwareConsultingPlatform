@@ -12,6 +12,11 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "paths": {
+      "software-consulting-platform-components": [
+        "./dist/software-consulting-platform-components"
+      ]
+    },
     "target": "ES2022",
     "module": "preserve"
   },
@@ -28,6 +33,12 @@
     },
     {
       "path": "./projects/software-consulting-platform/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/software-consulting-platform-components/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/software-consulting-platform-components/tsconfig.spec.json"
     }
   ]
 }
