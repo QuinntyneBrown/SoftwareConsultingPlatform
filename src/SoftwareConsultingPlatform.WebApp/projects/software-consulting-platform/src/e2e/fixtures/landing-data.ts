@@ -1,10 +1,10 @@
 export const mockLandingPageData = {
   navLinks: [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Home', routerLink: '/' },
+    { label: 'Services', routerLink: '/services' },
+    { label: 'Case Studies', routerLink: '/case-studies' },
+    { label: 'About', routerLink: '/about' },
+    { label: 'Contact', routerLink: '/contact' },
   ],
   heroHeadline: 'Transform Your Business with Expert Software Consulting',
   heroSubheadline:
@@ -97,15 +97,15 @@ export const mockLandingPageData = {
     {
       title: 'Services',
       links: [
-        { label: 'Custom Development', href: '/services/custom-development' },
-        { label: 'Cloud Solutions', href: '/services/cloud-solutions' },
+        { label: 'Custom Development', routerLink: '/services/custom-development' },
+        { label: 'Cloud Solutions', routerLink: '/services/cloud-solutions' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Case Studies', href: '/case-studies' },
+        { label: 'About Us', routerLink: '/about' },
+        { label: 'Case Studies', routerLink: '/case-studies' },
       ],
     },
   ],

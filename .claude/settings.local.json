@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(cat:*)",
-      "Bash(powershell -Command \"(Get-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md'' -Raw) -replace ''ProfessionalNetworkCRM'', ''SoftwareConsultingPlatform'' | Set-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md''\")"
+      "Bash(powershell -Command \"(Get-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md'' -Raw) -replace ''ProfessionalNetworkCRM'', ''SoftwareConsultingPlatform'' | Set-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md''\")",
+      "Bash(ng serve)",
+      "Bash(npm install:*)",
+      "Bash(ng build:*)"
     ],
     "deny": [],
     "ask": []

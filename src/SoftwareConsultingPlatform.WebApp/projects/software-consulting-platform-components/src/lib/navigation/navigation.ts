@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export interface NavLink {
   label: string;
-  href: string;
+  routerLink: string;
 }
 
 @Component({
   selector: 'sc-navigation',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss',
 })

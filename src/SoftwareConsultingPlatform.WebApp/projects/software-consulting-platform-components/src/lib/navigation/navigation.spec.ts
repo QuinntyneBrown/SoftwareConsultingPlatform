@@ -35,8 +35,8 @@ describe('Navigation', () => {
 
   it('should display links', () => {
     component.links = [
-      { label: 'Home', href: '/' },
-      { label: 'About', href: '/about' },
+      { label: 'Home', routerLink: '/' },
+      { label: 'About', routerLink: '/about' },
     ];
     fixture.detectChanges();
     const links = fixture.nativeElement.querySelectorAll('.sc-navigation__link');

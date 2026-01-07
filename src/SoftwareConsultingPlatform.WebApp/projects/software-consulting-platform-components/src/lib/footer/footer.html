@@ -11,7 +11,7 @@
           <h3 class="sc-footer__column-title">{{ column.title }}</h3>
           <ul class="sc-footer__links">
             <li *ngFor="let link of column.links">
-              <a [href]="link.href" class="sc-footer__link">{{ link.label }}</a>
+              <a [routerLink]="link.routerLink" class="sc-footer__link">{{ link.label }}</a>
             </li>
           </ul>
         </div>

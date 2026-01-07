@@ -41,11 +41,11 @@ export class LandingService {
   private getDefaultData(): LandingPageData {
     return {
       navLinks: [
-        { label: 'Home', href: '/' },
-        { label: 'Services', href: '/services' },
-        { label: 'Case Studies', href: '/case-studies' },
-        { label: 'About', href: '/about' },
-        { label: 'Contact', href: '/contact' },
+        { label: 'Home', routerLink: '/' },
+        { label: 'Services', routerLink: '/services' },
+        { label: 'Case Studies', routerLink: '/case-studies' },
+        { label: 'About', routerLink: '/about' },
+        { label: 'Contact', routerLink: '/contact' },
       ],
       heroHeadline: 'Transform Your Business with Expert Software Consulting',
       heroSubheadline:
@@ -184,27 +184,27 @@ export class LandingService {
         {
           title: 'Services',
           links: [
-            { label: 'Custom Development', href: '/services/custom-development' },
-            { label: 'Cloud Solutions', href: '/services/cloud-solutions' },
-            { label: 'Security Consulting', href: '/services/security' },
-            { label: 'Data Analytics', href: '/services/analytics' },
+            { label: 'Custom Development', routerLink: '/services/custom-development' },
+            { label: 'Cloud Solutions', routerLink: '/services/cloud-solutions' },
+            { label: 'Security Consulting', routerLink: '/services/security' },
+            { label: 'Data Analytics', routerLink: '/services/analytics' },
           ],
         },
         {
           title: 'Company',
           links: [
-            { label: 'About Us', href: '/about' },
-            { label: 'Case Studies', href: '/case-studies' },
-            { label: 'Careers', href: '/careers' },
-            { label: 'Blog', href: '/blog' },
+            { label: 'About Us', routerLink: '/about' },
+            { label: 'Case Studies', routerLink: '/case-studies' },
+            { label: 'Careers', routerLink: '/careers' },
+            { label: 'Blog', routerLink: '/blog' },
           ],
         },
         {
           title: 'Contact',
           links: [
-            { label: 'Get in Touch', href: '/contact' },
-            { label: 'Support', href: '/support' },
-            { label: 'Partners', href: '/partners' },
+            { label: 'Get in Touch', routerLink: '/contact' },
+            { label: 'Support', routerLink: '/support' },
+            { label: 'Partners', routerLink: '/partners' },
           ],
         },
       ],

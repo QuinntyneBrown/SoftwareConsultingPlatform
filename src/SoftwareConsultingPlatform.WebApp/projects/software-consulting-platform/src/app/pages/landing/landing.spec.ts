@@ -9,7 +9,7 @@ describe('Landing', () => {
   let mockLandingService: jest.Mocked<LandingService>;
 
   const mockData = {
-    navLinks: [{ label: 'Home', href: '/' }],
+    navLinks: [{ label: 'Home', routerLink: '/' }],
     heroHeadline: 'Test Headline',
     heroSubheadline: 'Test Subheadline',
     services: [],

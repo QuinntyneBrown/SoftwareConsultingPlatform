@@ -1,12 +1,12 @@
 <nav [class]="'sc-navigation' + (sticky ? ' sc-navigation--sticky' : '')">
   <div class="sc-navigation__container">
-    <a href="/" class="sc-navigation__logo">
+    <a routerLink="/" class="sc-navigation__logo">
       <img *ngIf="logoSrc" [src]="logoSrc" [alt]="logoAlt" />
       <span *ngIf="!logoSrc">{{ logoAlt }}</span>
     </a>
 
     <div class="sc-navigation__desktop">
-      <a *ngFor="let link of links" [href]="link.href" class="sc-navigation__link">
+      <a *ngFor="let link of links" [routerLink]="link.routerLink" class="sc-navigation__link">
         {{ link.label }}
       </a>
       <div class="sc-navigation__cta">
@@ -25,7 +25,7 @@
   </div>
 
   <div class="sc-navigation__mobile" [class.sc-navigation__mobile--open]="mobileMenuOpen">
-    <a *ngFor="let link of links" [href]="link.href" class="sc-navigation__mobile-link">
+    <a *ngFor="let link of links" [routerLink]="link.routerLink" class="sc-navigation__mobile-link">
       {{ link.label }}
     </a>
     <div class="sc-navigation__mobile-cta">

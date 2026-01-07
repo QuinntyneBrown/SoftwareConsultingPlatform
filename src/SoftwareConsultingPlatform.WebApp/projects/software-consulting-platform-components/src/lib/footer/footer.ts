@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export interface FooterLink {
   label: string;
-  href: string;
+  routerLink: string;
 }
 
 export interface FooterColumn {
@@ -13,7 +14,7 @@ export interface FooterColumn {
 
 @Component({
   selector: 'sc-footer',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
