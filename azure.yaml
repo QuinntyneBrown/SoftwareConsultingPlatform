@@ -1,0 +1,17 @@
+name: software-consulting-platform
+metadata:
+  template: software-consulting-platform@0.0.1
+infra:
+  provider: bicep
+  path: infra
+  module: main
+services:
+  web:
+    project: src/SoftwareConsultingPlatform.WebApp
+    dist: dist/software-consulting-platform/browser
+    language: ts
+    host: staticwebapp
+    hooks:
+      prepackage:
+        shell: pwsh
+        run: ../../infra/scripts/build-web.ps1
