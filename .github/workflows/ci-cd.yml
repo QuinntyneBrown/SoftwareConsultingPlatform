@@ -11,32 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-      - name: Test
-        run: dotnet test --configuration Release --no-build --verbosity normal
-        continue-on-error: true
-
   deploy:
-    name: Deploy to Azure
-    needs: build
+    name: Deploy to Azure Static Web App
     runs-on: ubuntu-latest
     environment: production
     

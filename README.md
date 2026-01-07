@@ -1,16 +1,15 @@
 # SoftwareConsultingPlatform
 
-A software consulting platform built with .NET 9.0 and Angular, deployed to Azure.
+A software consulting platform with an Angular web application, deployed to Azure Static Web Apps.
 
 ## CI/CD Pipeline
 
-This repository includes an automated CI/CD pipeline that deploys the application to Azure on every commit to the `main` branch.
+This repository includes an automated CI/CD pipeline that deploys the Angular application to Azure Static Web Apps on every commit to the `main` branch.
 
 ### What's Automated
 
-- **Build**: Automatic building of .NET application
-- **Test**: Running all tests in the solution
-- **Deploy**: Deployment to Azure Static Web Apps using Azure Developer CLI (azd)
+- **Deploy**: Automatic deployment of the Angular application to Azure Static Web Apps using Azure Developer CLI (azd)
+- **Infrastructure**: Automatic provisioning of Azure resources using Bicep templates
 
 ### Setup Requirements
 

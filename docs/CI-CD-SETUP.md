@@ -4,10 +4,7 @@ This guide explains how to set up the CI/CD pipeline for the SoftwareConsultingP
 
 ## Overview
 
-The CI/CD pipeline is configured using GitHub Actions and deploys the application to Azure on each commit to the `main` branch. The workflow consists of two jobs:
-
-1. **Build and Test**: Builds the .NET application and runs tests
-2. **Deploy**: Deploys the application to Azure using Azure Developer CLI (azd)
+The CI/CD pipeline is configured using GitHub Actions and deploys the Angular application to Azure Static Web Apps on each commit to the `main` branch. The workflow uses Azure Developer CLI (azd) to provision infrastructure and deploy the application.
 
 ## Prerequisites
 
@@ -15,6 +12,7 @@ The CI/CD pipeline is configured using GitHub Actions and deploys the applicatio
 - Azure CLI (`az`)
 - Azure Developer CLI (`azd`)
 - Appropriate permissions to create resources in Azure
+- Node.js and npm (for local development/testing)
 
 ## Required GitHub Configuration
 
@@ -118,30 +116,25 @@ To test deployment locally before pushing to `main`:
 ## Workflow Triggers
 
 The workflow is triggered by:
-- **Push to `main` branch**: Automatically builds and deploys
+- **Push to `main` branch**: Automatically deploys the Angular application
 - **Manual trigger**: Can be triggered manually from the GitHub Actions tab using "Run workflow"
 
-## Workflow Jobs
-
-### Build and Test Job
-
-- Checks out the code
-- Sets up .NET 9.0
-- Restores NuGet packages
-- Builds the solution in Release configuration
-- Runs tests (continues even if tests fail)
+## Workflow Job
 
 ### Deploy Job
 
 - Checks out the code
 - Sets up Azure Developer CLI
 - Authenticates with Azure (using either federated or client credentials)
-- Provisions infrastructure and deploys application using `azd up`
+- Provisions infrastructure and deploys the Angular application using `azd up`
+  - The `azd up` command runs the build script at `infra/scripts/build-web.ps1`
+  - This script runs `npm ci` and `npm run build` in the Angular project
+  - The built application is deployed to Azure Static Web Apps
 
 ## Infrastructure
 
 The application infrastructure is defined in `infra/main.bicep` and includes:
-- Azure Static Web App for hosting the Angular frontend
+- Azure Static Web App for hosting the Angular application
 
 The deployment is configured in `azure.yaml` which specifies:
 - Service name and type
@@ -158,15 +151,17 @@ The deployment is configured in `azure.yaml` which specifies:
 
 ### Build Fails
 
-- Check that the .NET SDK version matches the project requirements (currently 9.0)
-- Verify all dependencies are properly restored
+- Check that the Angular project has all required dependencies in package.json
+- Verify Node.js and npm versions are compatible
 - Review the build logs in the GitHub Actions run
+- Ensure the build script at `infra/scripts/build-web.ps1` can successfully build the project
 
 ### Deployment Fails
 
 - Verify the Azure subscription has enough quota for the resources
 - Check that the resource names don't conflict with existing resources
 - Review the azd logs in the GitHub Actions run
+- Ensure the Angular project exists at `src/SoftwareConsultingPlatform.WebApp`
 
 ## Additional Resources
 
