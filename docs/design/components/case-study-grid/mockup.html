@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study Grid Component - Mockup</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +13,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #F7FAFC;
             padding: 40px 20px;
         }
@@ -62,9 +63,9 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            border-color: #667eea;
-            color: #667eea;
-            background: #EEF2FF;
+            border-color: #FF5C35;
+            color: #FF5C35;
+            background: #FFF0ED;
         }
 
         .case-studies-grid {
@@ -160,8 +161,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #667eea;
-            background: #EEF2FF;
+            color: #FF5C35;
+            background: #FFF0ED;
             padding: 4px 12px;
             border-radius: 4px;
         }
@@ -176,7 +177,7 @@
         }
 
         .case-study:hover .case-study-title {
-            color: #667eea;
+            color: #FF5C35;
         }
 
         .case-study-description {
@@ -244,7 +245,7 @@
 
         .featured-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF5C35 0%, #9B26AF 50%, #00A9B5 100%);
             color: #FFFFFF;
             font-size: 12px;
             font-weight: 700;
@@ -303,8 +304,8 @@
         .load-more-btn {
             padding: 14px 32px;
             background: #FFFFFF;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #FF5C35;
+            border: 2px solid #FF5C35;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
@@ -313,7 +314,7 @@
         }
 
         .load-more-btn:hover {
-            background: #EEF2FF;
+            background: #FFF0ED;
             transform: translateY(-2px);
         }
     </style>
@@ -343,8 +344,8 @@
                     <svg width="100%" height="100%" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#FF5C35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9B26AF;stop-opacity:1" />
                             </linearGradient>
                         </defs>
                         <rect width="600" height="400" fill="url(#grad1)"/>
