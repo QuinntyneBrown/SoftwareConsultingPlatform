@@ -4,167 +4,104 @@ This guide explains how to set up the CI/CD pipeline for the SoftwareConsultingP
 
 ## Overview
 
-The CI/CD pipeline is configured using GitHub Actions and deploys the Angular application to Azure Static Web Apps on each commit to the `main` branch. The workflow uses Azure Developer CLI (azd) to provision infrastructure and deploy the application.
+The CI/CD pipeline is configured using GitHub Actions and deploys the Angular application to Azure Static Web Apps on each commit to the `main` branch. The workflow uses the Azure Static Web Apps deployment action with a deployment token.
 
 ## Prerequisites
 
-- Azure subscription
-- Azure CLI (`az`)
-- Azure Developer CLI (`azd`)
-- Appropriate permissions to create resources in Azure
-- Node.js and npm (for local development/testing)
+- Azure subscription with an Azure Static Web Apps resource already created
+- Access to the Azure Portal to retrieve the deployment token
+- Node.js 20 (for the build process)
+- npm package manager
 
 ## Required GitHub Configuration
 
-### GitHub Secrets and Variables
+### GitHub Secrets
 
-You need to configure the following in your GitHub repository under **Settings → Secrets and variables → Actions**:
+You need to configure the following secret in your GitHub repository under **Settings → Secrets and variables → Actions → Secrets**:
 
-#### Option 1: Using Federated Credentials (Recommended)
+- `AZURE_STATIC_WEB_APPS_API_TOKEN` - The deployment token for your Azure Static Web Apps resource
 
-**Variables** (Repository variables):
-- `AZURE_CLIENT_ID` - The client ID of your Azure service principal
-- `AZURE_TENANT_ID` - Your Azure tenant ID
-- `AZURE_ENV_NAME` - Name for your Azure environment (e.g., `dev`, `prod`)
-- `AZURE_LOCATION` - Azure region (e.g., `eastus`, `westus2`)
-- `AZURE_SUBSCRIPTION_ID` - Your Azure subscription ID
+### Getting the Deployment Token
 
-#### Option 2: Using Client Credentials
-
-**Secrets** (Repository secrets):
-- `AZURE_CREDENTIALS` - JSON containing Azure service principal credentials:
-  ```json
-  {
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "tenantId": "your-tenant-id"
-  }
-  ```
-
-**Variables** (Repository variables):
-- `AZURE_ENV_NAME` - Name for your Azure environment (e.g., `dev`, `prod`)
-- `AZURE_LOCATION` - Azure region (e.g., `eastus`, `westus2`)
-- `AZURE_SUBSCRIPTION_ID` - Your Azure subscription ID
-
-### GitHub Environment
-
-The workflow uses a `production` environment. You may need to configure this in **Settings → Environments**:
-
-1. Create an environment named `production`
-2. Optionally add protection rules (e.g., required reviewers)
-
-## Setting Up Azure Service Principal
-
-### For Federated Credentials (Recommended)
-
-1. Create a service principal:
-   ```bash
-   az ad sp create-for-rbac --name "software-consulting-platform-sp" --role contributor \
-     --scopes /subscriptions/{subscription-id} \
-     --json-auth
-   ```
-
-2. Configure federated credentials for GitHub Actions:
-   ```bash
-   az ad app federated-credential create \
-     --id <app-id> \
-     --parameters '{
-       "name": "github-actions-deploy",
-       "issuer": "https://token.actions.githubusercontent.com",
-       "subject": "repo:QuinntyneBrown/SoftwareConsultingPlatform:environment:production",
-       "audiences": ["api://AzureADTokenExchange"]
-     }'
-   ```
-
-3. Add the values to GitHub as variables (see above)
-
-### For Client Credentials
-
-1. Create a service principal and get credentials:
-   ```bash
-   az ad sp create-for-rbac --name "software-consulting-platform-sp" --role contributor \
-     --scopes /subscriptions/{subscription-id} \
-     --sdk-auth
-   ```
-
-2. Copy the JSON output and add it as the `AZURE_CREDENTIALS` secret in GitHub
-
-## Local Deployment Testing
-
-To test deployment locally before pushing to `main`:
-
-1. Install prerequisites:
-   ```bash
-   # Install Azure CLI
-   curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-   
-   # Install Azure Developer CLI
-   curl -fsSL https://aka.ms/install-azd.sh | bash
-   ```
-
-2. Login to Azure:
-   ```bash
-   az login
-   azd auth login
-   ```
-
-3. Deploy:
-   ```bash
-   azd up
-   ```
+1. Go to the [Azure Portal](https://portal.azure.com)
+2. Navigate to your Azure Static Web Apps resource
+3. Go to **Settings → Configuration** or **Overview**
+4. Find the **Manage deployment token** button
+5. Copy the deployment token
+6. Add it as the `AZURE_STATIC_WEB_APPS_API_TOKEN` secret in GitHub
 
 ## Workflow Triggers
 
 The workflow is triggered by:
-- **Push to `main` branch**: Automatically deploys the Angular application
+- **Push to `main` branch**: Automatically builds and deploys the Angular application
 - **Manual trigger**: Can be triggered manually from the GitHub Actions tab using "Run workflow"
 
-## Workflow Job
+## Workflow Jobs
 
-### Deploy Job
+### Build and Deploy Job
 
-- Checks out the code
-- Sets up Azure Developer CLI
-- Authenticates with Azure (using either federated or client credentials)
-- Provisions infrastructure and deploys the Angular application using `azd up`
-  - The `azd up` command runs the build script at `infra/scripts/build-web.ps1`
-  - This script runs `npm ci` and `npm run build` in the Angular project
-  - The built application is deployed to Azure Static Web Apps
+1. **Checkout code**: Checks out the repository code
+2. **Setup Node.js**: Installs Node.js 20 with npm caching
+3. **Install dependencies**: Runs `npm ci` to install Angular project dependencies
+4. **Build Angular application**: Runs `npm run build` to build the production version
+5. **Deploy to Azure Static Web Apps**: Deploys the built application using the deployment token
+
+The built application is located at `src/SoftwareConsultingPlatform.WebApp/dist/software-consulting-platform/browser`.
 
 ## Infrastructure
 
-The application infrastructure is defined in `infra/main.bicep` and includes:
-- Azure Static Web App for hosting the Angular application
+The Azure Static Web Apps resource should be created in Azure prior to setting up the CI/CD pipeline. The infrastructure can be provisioned using:
+- Azure Portal
+- Azure CLI
+- Infrastructure as Code tools (Bicep, Terraform, etc.)
 
-The deployment is configured in `azure.yaml` which specifies:
-- Service name and type
-- Build hooks
-- Output locations
+The deployment token from the Static Web Apps resource is used for authentication during deployment.
 
 ## Troubleshooting
 
 ### Workflow Fails with Authentication Error
 
-- Verify that all required secrets/variables are set correctly in GitHub
-- Check that the service principal has the necessary permissions
-- For federated credentials, ensure the subject matches your repository and environment
+- Verify that the `AZURE_STATIC_WEB_APPS_API_TOKEN` secret is set correctly in GitHub
+- Check that the deployment token hasn't expired or been regenerated
+- Ensure you copied the complete token without any extra spaces
 
 ### Build Fails
 
 - Check that the Angular project has all required dependencies in package.json
-- Verify Node.js and npm versions are compatible
+- Verify Node.js version compatibility (workflow uses Node.js 20)
 - Review the build logs in the GitHub Actions run
-- Ensure the build script at `infra/scripts/build-web.ps1` can successfully build the project
+- Test the build locally: `cd src/SoftwareConsultingPlatform.WebApp && npm ci && npm run build`
 
 ### Deployment Fails
 
-- Verify the Azure subscription has enough quota for the resources
-- Check that the resource names don't conflict with existing resources
-- Review the azd logs in the GitHub Actions run
-- Ensure the Angular project exists at `src/SoftwareConsultingPlatform.WebApp`
+- Verify the Azure Static Web Apps resource exists
+- Check that the deployment token is valid
+- Ensure the build output path is correct: `dist/software-consulting-platform/browser`
+- Review the deployment logs in the GitHub Actions run
+
+## Local Development and Testing
+
+To test the build locally before pushing to `main`:
+
+1. Navigate to the Angular project:
+   ```bash
+   cd src/SoftwareConsultingPlatform.WebApp
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm ci
+   ```
+
+3. Build the application:
+   ```bash
+   npm run build
+   ```
+
+4. The built application will be in `dist/software-consulting-platform/browser`
 
 ## Additional Resources
 
-- [Azure Developer CLI Documentation](https://learn.microsoft.com/azure/developer/azure-developer-cli/)
-- [GitHub Actions Documentation](https://docs.github.com/actions)
 - [Azure Static Web Apps Documentation](https://learn.microsoft.com/azure/static-web-apps/)
+- [GitHub Actions Documentation](https://docs.github.com/actions)
+- [Azure Static Web Apps Deploy Action](https://github.com/Azure/static-web-apps-deploy)
