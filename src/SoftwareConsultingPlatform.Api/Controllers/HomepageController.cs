@@ -1,6 +1,8 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SoftwareConsultingPlatform.Core;
+using SoftwareConsultingPlatform.Api.Features.Homepage.GetFeaturedCaseStudies;
+using SoftwareConsultingPlatform.Api.Features.Homepage.GetFeaturedServices;
+using SoftwareConsultingPlatform.Api.Features.Homepage.GetHomepageContent;
 
 namespace SoftwareConsultingPlatform.Api.Controllers;
 
@@ -8,29 +10,22 @@ namespace SoftwareConsultingPlatform.Api.Controllers;
 [Route("api/[controller]")]
 public class HomepageController : ControllerBase
 {
-    private readonly ISoftwareConsultingPlatformContext _context;
-    private readonly ITenantContext _tenantContext;
-    private readonly ILogger<HomepageController> _logger;
+    private readonly IMediator _mediator;
 
-    public HomepageController(
-        ISoftwareConsultingPlatformContext context,
-        ITenantContext tenantContext,
-        ILogger<HomepageController> logger)
+    public HomepageController(IMediator mediator)
     {
-        _context = context;
-        _tenantContext = tenantContext;
-        _logger = logger;
+        _mediator = mediator;
     }
 
     [HttpGet("content")]
     public async Task<IActionResult> GetContent(CancellationToken cancellationToken)
     {
-        var content = await _context.HomepageContents
-            .Where(h => h.TenantId == _tenantContext.TenantId)
-            .FirstOrDefaultAsync(cancellationToken);
+        var content = await _mediator.Send(new GetHomepageContentQuery(), cancellationToken);
 
         if (content == null)
+        {
             return NotFound();
+        }
 
         return Ok(content);
     }
@@ -38,41 +33,14 @@ public class HomepageController : ControllerBase
     [HttpGet("featured-case-studies")]
     public async Task<IActionResult> GetFeaturedCaseStudies(CancellationToken cancellationToken)
     {
-        var featuredCaseStudies = await _context.CaseStudies
-            .Where(cs => cs.TenantId == _tenantContext.TenantId && cs.Status == Core.Models.CaseStudyAggregate.Enums.CaseStudyStatus.Published && cs.Featured)
-            .OrderBy(cs => cs.FeaturedOrder)
-            .Take(3)
-            .Select(cs => new
-            {
-                cs.CaseStudyId,
-                cs.ClientName,
-                cs.ProjectTitle,
-                cs.Slug,
-                cs.Overview
-            })
-            .ToListAsync(cancellationToken);
-
-        return Ok(featuredCaseStudies);
+        var featured = await _mediator.Send(new GetFeaturedCaseStudiesQuery(), cancellationToken);
+        return Ok(featured);
     }
 
     [HttpGet("featured-services")]
     public async Task<IActionResult> GetFeaturedServices(CancellationToken cancellationToken)
     {
-        var featuredServices = await _context.Services
-            .Where(s => s.TenantId == _tenantContext.TenantId && s.Status == Core.Models.ServiceAggregate.Enums.ServiceStatus.Published && s.Featured)
-            .OrderBy(s => s.DisplayOrder)
-            .Take(3)
-            .Select(s => new
-            {
-                s.ServiceId,
-                s.Name,
-                s.Slug,
-                s.Tagline,
-                s.Overview,
-                s.IconUrl
-            })
-            .ToListAsync(cancellationToken);
-
-        return Ok(featuredServices);
+        var featured = await _mediator.Send(new GetFeaturedServicesQuery(), cancellationToken);
+        return Ok(featured);
     }
 }
