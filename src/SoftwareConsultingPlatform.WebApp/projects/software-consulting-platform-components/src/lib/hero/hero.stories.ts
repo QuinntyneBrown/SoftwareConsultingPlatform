@@ -16,15 +16,6 @@ export const Default: Story = {
     subheadline: 'Transform your ideas into reality with our expert development team.',
     alignment: 'left',
   },
-  render: (args) => ({
-    props: args,
-    template: \`
-      <sc-hero [headline]="headline" [subheadline]="subheadline" [alignment]="alignment">
-        <sc-button variant="primary">Get Started</sc-button>
-        <sc-button variant="secondary">Learn More</sc-button>
-      </sc-hero>
-    \`,
-  }),
 };
 
 export const Centered: Story = {

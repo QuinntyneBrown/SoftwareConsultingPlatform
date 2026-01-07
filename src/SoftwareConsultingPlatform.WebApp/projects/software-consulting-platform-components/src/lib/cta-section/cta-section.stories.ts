@@ -16,14 +16,6 @@ export const Standard: Story = {
     subheadline: 'Join thousands of satisfied customers today.',
     variant: 'standard',
   },
-  render: (args) => ({
-    props: args,
-    template: \`
-      <sc-cta-section [headline]="headline" [subheadline]="subheadline" [variant]="variant">
-        <sc-button variant="primary">Start Now</sc-button>
-      </sc-cta-section>
-    \`,
-  }),
 };
 
 export const Brand: Story = {
