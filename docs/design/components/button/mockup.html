@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Component - Mockup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #F7FAFC;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1A1A1A;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2D3748;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            background: #E14658;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background: #22252C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:active {
+            background: #22252C;
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            background: #E2E8F0;
+            color: #A0AEC0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+            background: #FFFFFF;
+            color: #E14658;
+            border: 2px solid #E14658;
+        }
+
+        .btn-secondary:hover {
+            background: #EEF2FF;
+            border-color: #22252C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-secondary:active {
+            background: #E0E7FF;
+            transform: translateY(0);
+        }
+
+        .btn-secondary:disabled {
+            background: #F7FAFC;
+            color: #CBD5E0;
+            border-color: #E2E8F0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Tertiary/Ghost Button */
+        .btn-tertiary {
+            background: transparent;
+            color: #E14658;
+        }
+
+        .btn-tertiary:hover {
+            background: #EEF2FF;
+            transform: translateY(-2px);
+        }
+
+        .btn-tertiary:active {
+            background: #E0E7FF;
+            transform: translateY(0);
+        }
+
+        .btn-tertiary:disabled {
+            color: #CBD5E0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Danger Button */
+        .btn-danger {
+            background: #F56565;
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            background: #E53E3E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+        }
+
+        .btn-danger:active {
+            background: #C53030;
+            transform: translateY(0);
+        }
+
+        /* Success Button */
+        .btn-success {
+            background: #48BB78;
+            color: #FFFFFF;
+        }
+
+        .btn-success:hover {
+            background: #38A169;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+        }
+
+        .btn-success:active {
+            background: #2F855A;
+            transform: translateY(0);
+        }
+
+        /* Size Variants */
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+            border-radius: 50px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 50px;
+        }
+
+        /* Icon Button */
+        .btn-icon-only {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Full Width */
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid #FFFFFF;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .demo-box {
+            background: #F7FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .demo-label {
+            font-size: 14px;
+            color: #4A5568;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Button Component Library</h1>
+
+        <div class="section">
+            <h2 class="section-title">Button Variants</h2>
+            <div class="demo-box">
+                <div class="demo-label">Primary Buttons</div>
+                <div class="button-group">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                    <button class="btn btn-primary btn-loading">Loading</button>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-label">Secondary Buttons</div>
+                <div class="button-group">
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-secondary" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-label">Tertiary/Ghost Buttons</div>
+                <div class="button-group">
+                    <button class="btn btn-tertiary">Tertiary Button</button>
+                    <button class="btn btn-tertiary" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-label">Danger & Success Buttons</div>
+                <div class="button-group">
+                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-success">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Button Sizes</h2>
+            <div class="demo-box">
+                <div class="button-group">
+                    <button class="btn btn-primary btn-large">Large Button</button>
+                    <button class="btn btn-primary">Medium Button</button>
+                    <button class="btn btn-primary btn-small">Small Button</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Buttons with Icons</h2>
+            <div class="demo-box">
+                <div class="button-group">
+                    <button class="btn btn-primary">
+                        Get Started
+                        <svg viewBox="0 0 20 20">
+                            <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <svg viewBox="0 0 20 20">
+                            <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/>
+                        </svg>
+                        Download
+                    </button>
+                    <button class="btn btn-tertiary">
+                        Learn More
+                        <svg viewBox="0 0 20 20">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Icon-Only Buttons</h2>
+            <div class="demo-box">
+                <div class="button-group">
+                    <button class="btn btn-primary btn-icon-only" title="Settings">
+                        <svg viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary btn-icon-only" title="Share">
+                        <svg viewBox="0 0 20 20">
+                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-tertiary btn-icon-only" title="Close">
+                        <svg viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Full Width Button</h2>
+            <div class="demo-box">
+                <button class="btn btn-primary btn-full">Full Width Button</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Button Groups</h2>
+            <div class="demo-box">
+                <div class="demo-label">Common Action Patterns</div>
+                <div class="button-group">
+                    <button class="btn btn-primary">Save Changes</button>
+                    <button class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+            <div class="demo-box">
+                <div class="demo-label">CTA Pattern</div>
+                <div class="button-group">
+                    <button class="btn btn-primary">Start Your Project</button>
+                    <button class="btn btn-tertiary">View Our Work</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

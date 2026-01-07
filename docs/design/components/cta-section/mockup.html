@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTA Section Component - Mockup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #FFFFFF;
+        }
+
+        .demo-container {
+            padding: 40px 20px;
+        }
+
+        .demo-title {
+            text-align: center;
+            font-size: 32px;
+            color: #1A1A1A;
+            margin-bottom: 40px;
+        }
+
+        /* Base CTA Section Styles */
+        .cta-section {
+            width: 100%;
+            padding: 80px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .cta-headline {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cta-subheadline {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #E14658;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background: #22252C;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #E14658;
+            border-color: #E14658;
+        }
+
+        .btn-secondary:hover {
+            background: #EEF2FF;
+            transform: translateY(-2px);
+        }
+
+        /* Variant 1: Standard (Light Background) */
+        .cta-standard {
+            background: #F7FAFC;
+        }
+
+        .cta-standard .cta-headline {
+            color: #1A1A1A;
+        }
+
+        .cta-standard .cta-subheadline {
+            color: #4A5568;
+        }
+
+        /* Variant 2: Brand Gradient */
+        .cta-brand {
+            background: #E14658;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-brand::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .cta-brand .cta-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-brand .cta-headline {
+            color: #FFFFFF;
+        }
+
+        .cta-brand .cta-subheadline {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-brand .btn-primary {
+            background: #FFFFFF;
+            color: #E14658;
+        }
+
+        .cta-brand .btn-primary:hover {
+            background: #F7FAFC;
+        }
+
+        .cta-brand .btn-secondary {
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        .cta-brand .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Variant 3: Dark */
+        .cta-dark {
+            background: #1E293B;
+        }
+
+        .cta-dark .cta-headline {
+            color: #FFFFFF;
+        }
+
+        .cta-dark .cta-subheadline {
+            color: #A0AEC0;
+        }
+
+        /* Variant 4: Contained/Card */
+        .cta-contained {
+            background: transparent;
+            padding: 0;
+            margin: 40px 20px;
+        }
+
+        .cta-contained .cta-container {
+            background: #F7FAFC;
+            border-radius: 16px;
+            padding: 80px 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+        }
+
+        .cta-contained .cta-headline {
+            color: #1A1A1A;
+        }
+
+        .cta-contained .cta-subheadline {
+            color: #4A5568;
+        }
+
+        /* Variant 5: Split Layout */
+        .cta-split {
+            background: #EEF2FF;
+            padding: 0;
+        }
+
+        .cta-split .cta-container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+            padding: 80px 40px;
+        }
+
+        .cta-split .cta-buttons {
+            justify-content: flex-start;
+        }
+
+        .cta-split .cta-headline {
+            color: #1A1A1A;
+        }
+
+        .cta-split .cta-subheadline {
+            color: #4A5568;
+        }
+
+        .cta-visual {
+            background: #E14658;
+            border-radius: 12px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Variant 6: With Form */
+        .cta-form {
+            background: #FFFFFF;
+            border: 2px solid #E2E8F0;
+        }
+
+        .cta-form .cta-headline {
+            color: #1A1A1A;
+        }
+
+        .cta-form .cta-subheadline {
+            color: #4A5568;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 50px;
+            font-family: inherit;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #E14658;
+        }
+
+        .newsletter-submit {
+            padding: 14px 28px;
+            background: #E14658;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-submit:hover {
+            background: #22252C;
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 1024px) {
+            .cta-split .cta-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .cta-split .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .cta-headline {
+                font-size: 28px;
+            }
+
+            .cta-subheadline {
+                font-size: 16px;
+            }
+
+            .cta-contained .cta-container {
+                padding: 60px 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+
+                width: 100%;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">CTA Section Component Variants</h1>
+    </div>
+
+    <!-- Variant 1: Standard -->
+    <section class="cta-section cta-standard">
+        <div class="cta-container">
+            <h2 class="cta-headline">Ready to Transform Your Business?</h2>
+            <p class="cta-subheadline">
+                Partner with us to build innovative solutions that drive growth and deliver exceptional user experiences.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant 2: Brand Gradient -->
+    <section class="cta-section cta-brand">
+        <div class="cta-container">
+            <h2 class="cta-headline">Let's Build Something Amazing Together</h2>
+            <p class="cta-subheadline">
+                From concept to launch, we're with you every step of the way. Start your project today.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Start Your Project</a>
+                <a href="#" class="btn btn-secondary">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant 3: Dark -->
+    <section class="cta-section cta-dark">
+        <div class="cta-container">
+            <h2 class="cta-headline">Need Expert Software Consulting?</h2>
+            <p class="cta-subheadline">
+                Our team of experienced engineers and designers is ready to help you achieve your goals.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Contact Us</a>
+                <a href="#" class="btn btn-secondary">See Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant 4: Contained/Card -->
+    <section class="cta-section cta-contained">
+        <div class="cta-container">
+            <h2 class="cta-headline">Scale Your Product with Confidence</h2>
+            <p class="cta-subheadline">
+                Whether you're launching an MVP or scaling to millions of users, we have the expertise to help you succeed.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Schedule a Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant 5: Split Layout -->
+    <section class="cta-section cta-split">
+        <div class="cta-container">
+            <div>
+                <h2 class="cta-headline">Turn Your Vision Into Reality</h2>
+                <p class="cta-subheadline">
+                    We specialize in helping startups and enterprises build world-class digital products. Let's discuss your project.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Get a Free Consultation</a>
+                </div>
+            </div>
+            <div class="cta-visual">
+                Visual / Image
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant 6: With Form (Newsletter) -->
+    <section class="cta-section cta-form">
+        <div class="cta-container">
+            <h2 class="cta-headline">Stay Updated on Our Latest Insights</h2>
+            <p class="cta-subheadline">
+                Subscribe to our newsletter for expert tips, case studies, and industry trends.
+            </p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="newsletter-submit">Subscribe</button>
+            </form>
+            <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <div style="height: 60px;"></div>
+</body>
+</html>

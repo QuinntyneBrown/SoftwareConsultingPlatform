@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Listing Component - Mockup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #FFFFFF;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 40px;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #4A5568;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .service-item {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #E14658;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: #E14658;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #FFFFFF;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+        }
+
+        .service-description {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #4A5568;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-features li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #2D3748;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #48BB78;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .service-link {
+            font-size: 15px;
+            font-weight: 600;
+            color: #E14658;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s ease;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        .service-link::after {
+            content: '→';
+            font-size: 16px;
+        }
+
+        /* Minimal Variant */
+        .services-minimal {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            margin-bottom: 80px;
+        }
+
+        .service-minimal {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 32px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .service-minimal:last-child {
+            border-bottom: none;
+        }
+
+        .service-minimal .service-icon {
+            margin-bottom: 0;
+        }
+
+        .service-minimal-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Compact Grid Variant */
+        .services-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .service-compact {
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-compact:hover {
+            background: #FFFFFF;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .service-compact .service-icon {
+            margin: 0 auto 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+        }
+
+        .service-compact .service-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .service-compact .service-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-compact .service-description {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin: 60px 0 32px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid,
+            .services-compact {
+                grid-template-columns: 1fr;
+            }
+
+            .service-minimal {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item,
+            .service-compact {
+                padding: 24px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .page-subtitle {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">Our Services</h1>
+        <p class="page-subtitle">
+            We offer comprehensive software consulting services to help you build, launch, and scale exceptional digital products.
+        </p>
+
+        <h2 class="section-header">Card Grid Layout (Default)</h2>
+        <div class="services-grid">
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 17.25v-2.5a2.75 2.75 0 00-2.75-2.75H4a2.75 2.75 0 00-2.75 2.75v2.5A2.75 2.75 0 004 20h2.25A2.75 2.75 0 009 17.25zm13.75 0v-2.5A2.75 2.75 0 0020 12h-2.25A2.75 2.75 0 0015 14.75v2.5A2.75 2.75 0 0017.75 20H20a2.75 2.75 0 002.75-2.75zm-13.75-11v-2.5A2.75 2.75 0 006.25 1H4a2.75 2.75 0 00-2.75 2.75v2.5A2.75 2.75 0 004 9h2.25A2.75 2.75 0 009 6.25zm13.75 0v-2.5A2.75 2.75 0 0020 1h-2.25A2.75 2.75 0 0015 3.75v2.5A2.75 2.75 0 0017.75 9H20a2.75 2.75 0 002.75-2.75z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">MVP Development</h3>
+                <p class="service-description">
+                    Rapidly validate your idea with a minimum viable product. We build, test, and iterate quickly to help you reach product-market fit.
+                </p>
+                <ul class="service-features">
+                    <li>Rapid prototyping and validation</li>
+                    <li>Agile development methodology</li>
+                    <li>User testing and feedback loops</li>
+                    <li>Scalable architecture from day one</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Product Strategy</h3>
+                <p class="service-description">
+                    Strategic guidance from conception to launch. We help you define your product vision, roadmap, and go-to-market strategy.
+                </p>
+                <ul class="service-features">
+                    <li>Market research and analysis</li>
+                    <li>Product roadmap planning</li>
+                    <li>Competitive positioning</li>
+                    <li>Growth strategy development</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 5a1 1 0 011-1h4a1 1 0 010 2H6v2a1 1 0 01-2 0V5zm16 0a1 1 0 01-1-1h-4a1 1 0 010-2h4a1 1 0 011 1v3a1 1 0 01-2 0V5zM4 15a1 1 0 012 0v2h2a1 1 0 010 2H5a1 1 0 01-1-1v-3zm16 0a1 1 0 01-2 0v2h-2a1 1 0 010 2h3a1 1 0 011-1v-3z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">UI/UX Design</h3>
+                <p class="service-description">
+                    Create intuitive, beautiful experiences that users love. Our designers craft interfaces that are both functional and delightful.
+                </p>
+                <ul class="service-features">
+                    <li>User research and personas</li>
+                    <li>Wireframing and prototyping</li>
+                    <li>Visual design and branding</li>
+                    <li>Usability testing</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Full-Stack Engineering</h3>
+                <p class="service-description">
+                    Build robust, scalable applications with our expert engineering team. From backend APIs to frontend interfaces.
+                </p>
+                <ul class="service-features">
+                    <li>Modern tech stack implementation</li>
+                    <li>API development and integration</li>
+                    <li>Database design and optimization</li>
+                    <li>Performance and security</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Quality Assurance</h3>
+                <p class="service-description">
+                    Ensure your product meets the highest standards. Comprehensive testing services for quality, performance, and security.
+                </p>
+                <ul class="service-features">
+                    <li>Automated testing implementation</li>
+                    <li>Manual QA and exploratory testing</li>
+                    <li>Performance and load testing</li>
+                    <li>Security audits</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Cloud & DevOps</h3>
+                <p class="service-description">
+                    Build reliable infrastructure and streamline deployment. Cloud architecture, CI/CD, and DevOps best practices.
+                </p>
+                <ul class="service-features">
+                    <li>Cloud infrastructure setup (AWS, Azure, GCP)</li>
+                    <li>CI/CD pipeline implementation</li>
+                    <li>Container orchestration (Docker, Kubernetes)</li>
+                    <li>Monitoring and observability</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+        </div>
+
+        <h2 class="section-header">Minimal List Layout</h2>
+        <div class="services-minimal">
+            <article class="service-minimal">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </div>
+                <div class="service-minimal-content">
+                    <h3 class="service-title">Staff Augmentation</h3>
+                    <p class="service-description">
+                        Scale your team with experienced developers, designers, and product managers. Seamlessly integrate our talent with your existing team.
+                    </p>
+                    <a href="#" class="service-link">Learn More</a>
+                </div>
+            </article>
+
+            <article class="service-minimal">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </div>
+                <div class="service-minimal-content">
+                    <h3 class="service-title">Maintenance & Support</h3>
+                    <p class="service-description">
+                        Keep your application running smoothly with ongoing maintenance, updates, and technical support. We're here when you need us.
+                    </p>
+                    <a href="#" class="service-link">Learn More</a>
+                </div>
+            </article>
+        </div>
+
+        <h2 class="section-header">Compact Grid Layout</h2>
+        <div class="services-compact">
+            <article class="service-compact">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Mobile Development</h3>
+                <p class="service-description">
+                    Native and cross-platform mobile apps for iOS and Android.
+                </p>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-compact">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">API Development</h3>
+                <p class="service-description">
+                    RESTful and GraphQL APIs built for performance and scalability.
+                </p>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-compact">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Performance Optimization</h3>
+                <p class="service-description">
+                    Speed up your application with expert optimization techniques.
+                </p>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+
+            <article class="service-compact">
+                <div class="service-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Enterprise Solutions</h3>
+                <p class="service-description">
+                    Large-scale systems for complex business requirements.
+                </p>
+                <a href="#" class="service-link">Learn More</a>
+            </article>
+        </div>
+    </div>
+</body>
+</html>
