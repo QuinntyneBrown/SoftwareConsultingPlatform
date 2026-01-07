@@ -1,0 +1,23 @@
+@if (viewModel$ | async; as vm) {
+  <sc-navigation [links]="navLinks" logoAlt="Software Consulting Platform">
+    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
+  </sc-navigation>
+  <router-outlet></router-outlet>
+
+  <sc-footer
+    [tagline]="vm.footerTagline"
+    [columns]="vm.footerColumns"
+    [copyright]="vm.copyright"
+    theme="dark"
+  >
+    <div social class="main-layout__social">
+      <a href="https://linkedin.com" aria-label="LinkedIn" class="main-layout__social-link">in</a>
+      <a href="https://twitter.com" aria-label="Twitter" class="main-layout__social-link">X</a>
+      <a href="https://github.com" aria-label="GitHub" class="main-layout__social-link">gh</a>
+    </div>
+    <div legal class="main-layout__legal">
+      <a href="/privacy" class="main-layout__legal-link">Privacy Policy</a>
+      <a href="/terms" class="main-layout__legal-link">Terms of Service</a>
+    </div>
+  </sc-footer>
+}

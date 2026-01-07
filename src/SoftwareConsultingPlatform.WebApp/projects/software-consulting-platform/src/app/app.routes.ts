@@ -1,21 +1,31 @@
 import { Routes } from '@angular/router';
-import { Landing } from './pages/landing/landing';
-import { CaseStudies } from './pages/case-studies/case-studies';
-import { CaseStudyDetail } from './pages/case-study-detail/case-study-detail';
-import { Services } from './pages/services/services';
-import { ServiceDetail } from './pages/service-detail/service-detail';
-import { Login } from './pages/login/login';
-import { Register } from './pages/register/register';
-import { ForgotPassword } from './pages/forgot-password/forgot-password';
 
 export const routes: Routes = [
-  { path: '', component: Landing },
-  { path: 'case-studies', component: CaseStudies },
-  { path: 'case-studies/:id', component: CaseStudyDetail },
-  { path: 'services', component: Services },
-  { path: 'services/:id', component: ServiceDetail },
-  { path: 'login', component: Login },
-  { path: 'register', component: Register },
-  { path: 'forgot-password', component: ForgotPassword },
-  { path: '**', redirectTo: '' },
+  {
+    path: '',
+    loadComponent: () => import('./layouts/main-layout/main-layout').then(m => m.MainLayout),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/landing/landing').then(m => m.Landing)
+      },
+      {
+        path: 'case-studies',
+        loadComponent: () => import('./pages/case-studies/case-studies').then(m => m.CaseStudies)
+      },
+      {
+        path: 'case-studies/:id',
+        loadComponent: () => import('./pages/case-study-detail/case-study-detail').then(m => m.CaseStudyDetail)
+      },
+      {
+        path: 'services',
+        loadComponent: () => import('./pages/services/services').then(m => m.Services)
+      },
+      {
+        path: 'services/:id',
+        loadComponent: () => import('./pages/service-detail/service-detail').then(m => m.ServiceDetail)
+      },
+      { path: '**', redirectTo: '' },
+    ]
+  }
 ];

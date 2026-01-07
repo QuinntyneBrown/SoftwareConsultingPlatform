@@ -1,8 +1,4 @@
 <ng-container *ngIf="viewModel$ | async as vm">
-  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
-    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
-  </sc-navigation>
-
   <main class="case-studies">
     <sc-hero
       headline="Case Studies"
@@ -161,21 +157,4 @@
       </div>
     </section>
   </main>
-
-  <sc-footer
-    [tagline]="vm.footerTagline"
-    [columns]="vm.footerColumns"
-    [copyright]="vm.copyright"
-    theme="dark"
-  >
-    <div social class="case-studies__social">
-      <a href="https://linkedin.com" aria-label="LinkedIn" class="case-studies__social-link">in</a>
-      <a href="https://twitter.com" aria-label="Twitter" class="case-studies__social-link">X</a>
-      <a href="https://github.com" aria-label="GitHub" class="case-studies__social-link">gh</a>
-    </div>
-    <div legal class="case-studies__legal">
-      <a href="/privacy" class="case-studies__legal-link">Privacy Policy</a>
-      <a href="/terms" class="case-studies__legal-link">Terms of Service</a>
-    </div>
-  </sc-footer>
 </ng-container>

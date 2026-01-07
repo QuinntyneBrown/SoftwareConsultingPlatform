@@ -1,0 +1,14 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  <rect x="50" y="50" width="1100" height="60" fill="#4F46E5" rx="8"/>
+  <text x="100" y="90" font-family="Arial, sans-serif" font-size="24" fill="white" font-weight="bold">Analytics Dashboard</text>
+  <rect x="50" y="130" width="540" height="320" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+  <text x="70" y="160" font-family="Arial, sans-serif" font-size="18" fill="#1F2937" font-weight="600">Performance Metrics</text>
+  <polyline points="80,400 200,300 320,320 440,250 560,280" stroke="#4F46E5" stroke-width="3" fill="none"/>
+  <rect x="610" y="130" width="540" height="320" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+  <text x="630" y="160" font-family="Arial, sans-serif" font-size="18" fill="#1F2937" font-weight="600">Usage Statistics</text>
+  <rect x="650" y="220" width="80" height="180" fill="#818CF8" opacity="0.7" rx="4"/>
+  <rect x="770" y="180" width="80" height="220" fill="#818CF8" opacity="0.7" rx="4"/>
+  <rect x="890" y="200" width="80" height="200" fill="#818CF8" opacity="0.7" rx="4"/>
+  <rect x="1010" y="160" width="80" height="240" fill="#818CF8" opacity="0.7" rx="4"/>
+</svg>

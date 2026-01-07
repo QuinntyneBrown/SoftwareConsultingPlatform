@@ -1,8 +1,4 @@
 <ng-container *ngIf="viewModel$ | async as vm">
-  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
-    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
-  </sc-navigation>
-
   <main class="case-study-detail" (keydown)="onKeyDown($event, vm.caseStudy.screenshots?.length || 0)">
     <section class="case-study-detail__hero">
       <div class="case-study-detail__hero-image">

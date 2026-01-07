@@ -1,0 +1,14 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  <rect x="50" y="50" width="1100" height="60" fill="#4F46E5" rx="8"/>
+  <text x="100" y="90" font-family="Arial, sans-serif" font-size="24" fill="white" font-weight="bold">Dashboard Overview</text>
+  <rect x="50" y="130" width="350" height="280" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+  <rect x="70" y="150" width="310" height="40" fill="#EEF2FF" rx="4"/>
+  <text x="90" y="177" font-family="Arial, sans-serif" font-size="18" fill="#4F46E5" font-weight="600">Active Patients</text>
+  <text x="225" y="245" font-family="Arial, sans-serif" font-size="48" fill="#4F46E5" font-weight="bold" text-anchor="middle">12,543</text>
+  <rect x="420" y="130" width="730" height="280" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+  <text x="440" y="160" font-family="Arial, sans-serif" font-size="20" fill="#1F2937" font-weight="600">Recent Activity</text>
+  <rect x="440" y="180" width="690" height="50" fill="#F9FAFB" rx="4"/>
+  <rect x="440" y="240" width="690" height="50" fill="#F9FAFB" rx="4"/>
+  <rect x="440" y="300" width="690" height="50" fill="#F9FAFB" rx="4"/>
+</svg>

@@ -1,8 +1,4 @@
 <ng-container *ngIf="viewModel$ | async as vm">
-  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
-    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
-  </sc-navigation>
-
   <main class="landing">
     <sc-hero
       [headline]="vm.heroHeadline"
@@ -51,21 +47,4 @@
       <sc-button variant="tertiary" size="large">Contact Us</sc-button>
     </sc-cta-section>
   </main>
-
-  <sc-footer
-    [tagline]="vm.footerTagline"
-    [columns]="vm.footerColumns"
-    [copyright]="vm.copyright"
-    theme="dark"
-  >
-    <div social class="landing__social">
-      <a href="https://linkedin.com" aria-label="LinkedIn" class="landing__social-link">in</a>
-      <a href="https://twitter.com" aria-label="Twitter" class="landing__social-link">X</a>
-      <a href="https://github.com" aria-label="GitHub" class="landing__social-link">gh</a>
-    </div>
-    <div legal class="landing__legal">
-      <a href="/privacy" class="landing__legal-link">Privacy Policy</a>
-      <a href="/terms" class="landing__legal-link">Terms of Service</a>
-    </div>
-  </sc-footer>
 </ng-container>
