@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(powershell -Command \"(Get-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md'' -Raw) -replace ''ProfessionalNetworkCRM'', ''SoftwareConsultingPlatform'' | Set-Content ''c:\\projects\\SoftwareConsultingPlatform\\docs\\specs\\implementation-specs.md''\")"
     ],
     "deny": [],
     "ask": []
