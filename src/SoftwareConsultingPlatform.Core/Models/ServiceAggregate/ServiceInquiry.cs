@@ -17,4 +17,25 @@ public class ServiceInquiry
 
     // Navigation property
     public Service Service { get; set; } = null!;
+
+    // Private constructor for EF Core
+    private ServiceInquiry() { }
+
+    public ServiceInquiry(
+        Guid tenantId,
+        Guid serviceId,
+        string name,
+        string email,
+        string? company,
+        string projectDescription)
+    {
+        ServiceInquiryId = Guid.NewGuid();
+        TenantId = tenantId;
+        ServiceId = serviceId;
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Email = email ?? throw new ArgumentNullException(nameof(email));
+        Company = company;
+        ProjectDescription = projectDescription ?? throw new ArgumentNullException(nameof(projectDescription));
+        CreatedAt = DateTime.UtcNow;
+    }
 }
