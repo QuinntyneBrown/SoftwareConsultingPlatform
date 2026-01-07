@@ -1,0 +1,235 @@
+<ng-container *ngIf="viewModel$ | async as vm">
+  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
+    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
+  </sc-navigation>
+
+  <main class="service-detail">
+    <section class="service-detail__hero">
+      <div class="service-detail__hero-bg">
+        <img [src]="vm.service.heroImage" [alt]="vm.service.title" />
+      </div>
+      <div class="service-detail__hero-overlay">
+        <div class="service-detail__container">
+          <nav class="service-detail__breadcrumb" aria-label="Breadcrumb">
+            <a routerLink="/">Home</a>
+            <span>/</span>
+            <a routerLink="/services">Services</a>
+            <span>/</span>
+            <span>{{ vm.service.title }}</span>
+          </nav>
+          <div class="service-detail__hero-icon">
+            <mat-icon>{{ vm.service.icon }}</mat-icon>
+          </div>
+          <h1 class="service-detail__title">{{ vm.service.title }}</h1>
+          <p class="service-detail__tagline">{{ vm.service.tagline }}</p>
+          <sc-button variant="primary" size="large" routerLink="/contact">Get Started</sc-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__overview">
+      <div class="service-detail__container">
+        <div class="service-detail__overview-grid">
+          <div class="service-detail__overview-content">
+            <h2 class="service-detail__section-title">Overview</h2>
+            <p class="service-detail__text">{{ vm.service.overview }}</p>
+          </div>
+          <div class="service-detail__metrics-card" *ngIf="vm.service.metrics?.length">
+            <div *ngFor="let metric of vm.service.metrics" class="service-detail__metric">
+              <span class="service-detail__metric-value">{{ metric.value }}</span>
+              <span class="service-detail__metric-label">{{ metric.label }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__activities">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">What We Do</h2>
+        <ul class="service-detail__activities-list">
+          <li *ngFor="let activity of vm.service.activities" class="service-detail__activity">
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ activity }}</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="service-detail__process">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">How We Work</h2>
+        <p class="service-detail__section-subtitle">Our proven process ensures successful delivery</p>
+        <div class="service-detail__process-timeline">
+          <div
+            *ngFor="let step of vm.service.processSteps; let i = index; let last = last"
+            class="service-detail__process-step"
+          >
+            <div class="service-detail__process-number">{{ step.stepNumber }}</div>
+            <div class="service-detail__process-content">
+              <h3 class="service-detail__process-title">{{ step.title }}</h3>
+              <p class="service-detail__process-description">{{ step.description }}</p>
+              <span *ngIf="step.duration" class="service-detail__process-duration">
+                <mat-icon>schedule</mat-icon> {{ step.duration }}
+              </span>
+            </div>
+            <div class="service-detail__process-connector" *ngIf="!last"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__technologies" *ngIf="vm.service.technologies?.length">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Technologies We Use</h2>
+        <div class="service-detail__tech-groups">
+          <div *ngFor="let group of vm.service.technologies" class="service-detail__tech-group">
+            <h3 class="service-detail__tech-category">{{ group.category }}</h3>
+            <div class="service-detail__tech-items">
+              <div *ngFor="let tech of group.items" class="service-detail__tech-item">
+                <mat-icon *ngIf="tech.icon">{{ tech.icon }}</mat-icon>
+                <span>{{ tech.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__benefits" *ngIf="vm.service.benefits?.length">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Why Choose Us</h2>
+        <div class="service-detail__benefits-grid">
+          <div *ngFor="let benefit of vm.service.benefits" class="service-detail__benefit">
+            <div class="service-detail__benefit-icon">
+              <mat-icon>{{ benefit.icon }}</mat-icon>
+            </div>
+            <h3 class="service-detail__benefit-headline">{{ benefit.headline }}</h3>
+            <p class="service-detail__benefit-description">{{ benefit.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__pricing" *ngIf="vm.service.pricingModels?.length">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Engagement Models</h2>
+        <p class="service-detail__section-subtitle">Flexible options to suit your needs</p>
+        <div class="service-detail__pricing-grid">
+          <div *ngFor="let model of vm.service.pricingModels" class="service-detail__pricing-card">
+            <h3 class="service-detail__pricing-name">{{ model.name }}</h3>
+            <p class="service-detail__pricing-description">{{ model.description }}</p>
+            <p class="service-detail__pricing-ideal">
+              <strong>Ideal for:</strong> {{ model.idealFor }}
+            </p>
+          </div>
+        </div>
+        <div class="service-detail__pricing-cta">
+          <p>Contact us to discuss your specific requirements and get a tailored quote.</p>
+          <sc-button variant="primary" size="medium" routerLink="/contact">Request Quote</sc-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__testimonial" *ngIf="vm.service.testimonial">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">What Our Clients Say</h2>
+        <sc-testimonial
+          [quote]="vm.service.testimonial.quote"
+          [authorName]="vm.service.testimonial.authorName"
+          [authorPosition]="vm.service.testimonial.authorPosition"
+          [authorCompany]="vm.service.testimonial.authorCompany"
+          [rating]="vm.service.testimonial.rating"
+        ></sc-testimonial>
+      </div>
+    </section>
+
+    <section class="service-detail__faqs" *ngIf="vm.service.faqs?.length">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Frequently Asked Questions</h2>
+        <mat-accordion class="service-detail__accordion">
+          <mat-expansion-panel *ngFor="let faq of vm.service.faqs; let first = first" [expanded]="first">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ faq.question }}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="service-detail__faq-answer">{{ faq.answer }}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="service-detail__faq-cta">
+          <p>Still have questions? We'd love to hear from you.</p>
+          <sc-button variant="secondary" size="medium" routerLink="/contact">Contact Us</sc-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__related" *ngIf="vm.service.relatedCaseStudies?.length">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Related Case Studies</h2>
+        <sc-case-study-grid [caseStudies]="vm.service.relatedCaseStudies" [columns]="2"></sc-case-study-grid>
+        <div class="service-detail__related-cta">
+          <a routerLink="/case-studies" class="service-detail__related-link">
+            View All Case Studies <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-detail__other-services">
+      <div class="service-detail__container">
+        <h2 class="service-detail__section-title">Other Services</h2>
+        <div class="service-detail__other-grid">
+          <a routerLink="/services/custom-development" class="service-detail__other-card">
+            <mat-icon>code</mat-icon>
+            <span>Custom Development</span>
+          </a>
+          <a routerLink="/services/cloud-solutions" class="service-detail__other-card">
+            <mat-icon>cloud</mat-icon>
+            <span>Cloud Solutions</span>
+          </a>
+          <a routerLink="/services/security" class="service-detail__other-card">
+            <mat-icon>security</mat-icon>
+            <span>Security Consulting</span>
+          </a>
+          <a routerLink="/services/analytics" class="service-detail__other-card">
+            <mat-icon>analytics</mat-icon>
+            <span>Data Analytics</span>
+          </a>
+          <a routerLink="/services/digital-transformation" class="service-detail__other-card">
+            <mat-icon>rocket_launch</mat-icon>
+            <span>Digital Transformation</span>
+          </a>
+          <a routerLink="/services/strategy" class="service-detail__other-card">
+            <mat-icon>target</mat-icon>
+            <span>Strategy & Advisory</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <sc-cta-section
+      headline="Ready to Get Started?"
+      subheadline="Let's discuss how we can help you achieve your goals."
+      variant="brand"
+    >
+      <sc-button variant="secondary" size="large" routerLink="/contact">Start a Project</sc-button>
+      <sc-button variant="tertiary" size="large" routerLink="/services">Back to Services</sc-button>
+    </sc-cta-section>
+  </main>
+
+  <sc-footer
+    [tagline]="vm.footerTagline"
+    [columns]="vm.footerColumns"
+    [copyright]="vm.copyright"
+    theme="dark"
+  >
+    <div social class="service-detail__social">
+      <a href="https://linkedin.com" aria-label="LinkedIn" class="service-detail__social-link">in</a>
+      <a href="https://twitter.com" aria-label="Twitter" class="service-detail__social-link">X</a>
+      <a href="https://github.com" aria-label="GitHub" class="service-detail__social-link">gh</a>
+    </div>
+    <div legal class="service-detail__legal">
+      <a href="/privacy" class="service-detail__legal-link">Privacy Policy</a>
+      <a href="/terms" class="service-detail__legal-link">Terms of Service</a>
+    </div>
+  </sc-footer>
+</ng-container>
