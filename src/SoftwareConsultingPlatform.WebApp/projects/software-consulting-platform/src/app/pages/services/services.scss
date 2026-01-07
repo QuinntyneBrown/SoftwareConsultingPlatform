@@ -1,0 +1,262 @@
+.services-page {
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__listing {
+    padding: 80px 0;
+    background: #ffffff;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+
+  &__card-content {
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &__card-icon {
+    background: #e14658;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+
+    mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  &__card-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  &__card-features {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #444;
+
+    li {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__card-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #e14658;
+    font-weight: 500;
+    font-size: 14px;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__card:hover &__card-link mat-icon {
+    transform: translateX(4px);
+  }
+
+  &__process {
+    padding: 80px 0;
+    background: #f8f7f5;
+  }
+
+  &__section-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 16px;
+    color: #22252c;
+  }
+
+  &__section-subtitle {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin: 0 0 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__process-step {
+    text-align: center;
+    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
+  &__process-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #e14658;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  &__process-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #22252c;
+  }
+
+  &__process-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__stats {
+    padding: 64px 0;
+    background: #22252c;
+    color: #ffffff;
+  }
+
+  &__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__stat {
+    text-align: center;
+  }
+
+  &__stat-value {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    color: #e14658;
+    margin-bottom: 8px;
+
+    @media (max-width: 640px) {
+      font-size: 36px;
+    }
+  }
+
+  &__stat-label {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__legal-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+::ng-deep {
+  .services-page {
+    .mat-mdc-card-header {
+      padding-bottom: 8px;
+    }
+
+    .mat-mdc-card-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .mat-mdc-card-content {
+      padding-bottom: 8px;
+    }
+
+    .mat-mdc-card-actions {
+      padding: 8px 16px 16px;
+    }
+  }
+}

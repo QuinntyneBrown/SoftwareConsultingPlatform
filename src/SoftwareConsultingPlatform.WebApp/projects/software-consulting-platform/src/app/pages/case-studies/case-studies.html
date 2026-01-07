@@ -1,0 +1,181 @@
+<ng-container *ngIf="viewModel$ | async as vm">
+  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
+    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
+  </sc-navigation>
+
+  <main class="case-studies">
+    <sc-hero
+      headline="Case Studies"
+      subheadline="Explore how we've helped organizations achieve their goals through innovative software solutions."
+      alignment="center"
+    ></sc-hero>
+
+    <section class="case-studies__content">
+      <div class="case-studies__container">
+        <div class="case-studies__controls">
+          <div class="case-studies__search">
+            <mat-form-field appearance="outline" class="case-studies__search-field">
+              <mat-label>Search case studies</mat-label>
+              <input
+                matInput
+                type="text"
+                [value]="vm.searchTerm"
+                (input)="onSearchChange($any($event.target).value)"
+                placeholder="Search by title, description, or tags..."
+              />
+              <mat-icon matSuffix>search</mat-icon>
+              <button
+                *ngIf="vm.searchTerm"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear search"
+                (click)="onSearchChange('')"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+          <div class="case-studies__sort">
+            <mat-form-field appearance="outline">
+              <mat-label>Sort by</mat-label>
+              <mat-select [value]="vm.sortOption" (selectionChange)="onSortChange($event.value)">
+                <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="case-studies__main">
+          <aside class="case-studies__filters">
+            <div class="case-studies__filters-header">
+              <h3 class="case-studies__filters-title">Filters</h3>
+              <button
+                *ngIf="vm.hasActiveFilters"
+                mat-button
+                color="primary"
+                (click)="onClearFilters()"
+              >
+                Clear All
+              </button>
+            </div>
+
+            <mat-expansion-panel expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Industry
+                  <span *ngIf="vm.selectedIndustries.length" class="case-studies__filter-count">
+                    ({{ vm.selectedIndustries.length }})
+                  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-chip-listbox multiple aria-label="Industry filters">
+                <mat-chip-option
+                  *ngFor="let industry of vm.filters.industries"
+                  [selected]="vm.selectedIndustries.includes(industry)"
+                  (click)="onIndustryToggle(industry)"
+                >
+                  {{ industry }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Technology
+                  <span *ngIf="vm.selectedTechnologies.length" class="case-studies__filter-count">
+                    ({{ vm.selectedTechnologies.length }})
+                  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-chip-listbox multiple aria-label="Technology filters">
+                <mat-chip-option
+                  *ngFor="let tech of vm.filters.technologies"
+                  [selected]="vm.selectedTechnologies.includes(tech)"
+                  (click)="onTechnologyToggle(tech)"
+                >
+                  {{ tech }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Service Type
+                  <span *ngIf="vm.selectedServiceTypes.length" class="case-studies__filter-count">
+                    ({{ vm.selectedServiceTypes.length }})
+                  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-chip-listbox multiple aria-label="Service type filters">
+                <mat-chip-option
+                  *ngFor="let service of vm.filters.serviceTypes"
+                  [selected]="vm.selectedServiceTypes.includes(service)"
+                  (click)="onServiceTypeToggle(service)"
+                >
+                  {{ service }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+            </mat-expansion-panel>
+          </aside>
+
+          <div class="case-studies__results">
+            <div class="case-studies__results-header">
+              <p class="case-studies__results-count">
+                Showing {{ vm.caseStudies.length }} of {{ vm.totalCount }} case studies
+              </p>
+            </div>
+
+            <div *ngIf="vm.caseStudies.length > 0; else emptyState">
+              <sc-case-study-grid [caseStudies]="vm.caseStudies" [columns]="3"></sc-case-study-grid>
+
+              <mat-paginator
+                *ngIf="vm.totalCount > 12"
+                [length]="vm.totalCount"
+                [pageSize]="12"
+                [pageIndex]="vm.page - 1"
+                [pageSizeOptions]="[12]"
+                (page)="onPageChange($event)"
+                aria-label="Select page"
+              ></mat-paginator>
+            </div>
+
+            <ng-template #emptyState>
+              <div class="case-studies__empty">
+                <mat-icon class="case-studies__empty-icon">search_off</mat-icon>
+                <h3 class="case-studies__empty-title">No case studies found</h3>
+                <p class="case-studies__empty-text">
+                  Try adjusting your search or filters to find what you're looking for.
+                </p>
+                <button mat-stroked-button color="primary" (click)="onClearFilters()">
+                  Clear All Filters
+                </button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <sc-footer
+    [tagline]="vm.footerTagline"
+    [columns]="vm.footerColumns"
+    [copyright]="vm.copyright"
+    theme="dark"
+  >
+    <div social class="case-studies__social">
+      <a href="https://linkedin.com" aria-label="LinkedIn" class="case-studies__social-link">in</a>
+      <a href="https://twitter.com" aria-label="Twitter" class="case-studies__social-link">X</a>
+      <a href="https://github.com" aria-label="GitHub" class="case-studies__social-link">gh</a>
+    </div>
+    <div legal class="case-studies__legal">
+      <a href="/privacy" class="case-studies__legal-link">Privacy Policy</a>
+      <a href="/terms" class="case-studies__legal-link">Terms of Service</a>
+    </div>
+  </sc-footer>
+</ng-container>

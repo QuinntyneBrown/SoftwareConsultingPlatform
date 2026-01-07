@@ -1,0 +1,182 @@
+.case-studies {
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__content {
+    padding: 48px 0 80px;
+    background: #f8f7f5;
+    min-height: 60vh;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  &__search-field {
+    width: 100%;
+  }
+
+  &__sort {
+    min-width: 180px;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__filters {
+    @media (max-width: 1024px) {
+      order: 1;
+    }
+  }
+
+  &__filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__filters-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #22252c;
+  }
+
+  &__filter-count {
+    font-size: 14px;
+    color: #666;
+    margin-left: 8px;
+  }
+
+  &__results {
+    @media (max-width: 1024px) {
+      order: 2;
+    }
+  }
+
+  &__results-header {
+    margin-bottom: 24px;
+  }
+
+  &__results-count {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 80px 24px;
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
+  &__empty-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    color: #ccc;
+    margin-bottom: 16px;
+  }
+
+  &__empty-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #22252c;
+  }
+
+  &__empty-text {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 24px;
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__legal-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+::ng-deep {
+  .case-studies {
+    .mat-mdc-form-field {
+      font-size: 14px;
+    }
+
+    .mat-expansion-panel {
+      margin-bottom: 8px;
+      background: #ffffff;
+    }
+
+    .mat-expansion-panel-header-title {
+      font-weight: 500;
+    }
+
+    .mat-mdc-chip-listbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mat-paginator {
+      margin-top: 32px;
+      background: transparent;
+    }
+  }
+}

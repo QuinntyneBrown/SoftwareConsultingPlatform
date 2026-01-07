@@ -1,0 +1,224 @@
+<ng-container *ngIf="viewModel$ | async as vm">
+  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
+    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
+  </sc-navigation>
+
+  <main class="case-study-detail" (keydown)="onKeyDown($event, vm.caseStudy.screenshots?.length || 0)">
+    <section class="case-study-detail__hero">
+      <div class="case-study-detail__hero-image">
+        <img [src]="vm.caseStudy.imageUrl" [alt]="vm.caseStudy.imageAlt" />
+      </div>
+      <div class="case-study-detail__hero-overlay">
+        <div class="case-study-detail__container">
+          <nav class="case-study-detail__breadcrumb" aria-label="Breadcrumb">
+            <a routerLink="/">Home</a>
+            <span>/</span>
+            <a routerLink="/case-studies">Case Studies</a>
+            <span>/</span>
+            <span>{{ vm.caseStudy.title }}</span>
+          </nav>
+          <h1 class="case-study-detail__title">{{ vm.caseStudy.title }}</h1>
+          <div class="case-study-detail__meta">
+            <div class="case-study-detail__client" *ngIf="vm.caseStudy.clientName">
+              <img
+                *ngIf="vm.caseStudy.clientLogo"
+                [src]="vm.caseStudy.clientLogo"
+                [alt]="vm.caseStudy.clientName + ' logo'"
+                class="case-study-detail__client-logo"
+              />
+              <span class="case-study-detail__client-name">{{ vm.caseStudy.clientName }}</span>
+            </div>
+            <div class="case-study-detail__duration" *ngIf="vm.caseStudy.projectDuration">
+              <mat-icon>schedule</mat-icon>
+              <span>{{ vm.caseStudy.projectDuration }}</span>
+            </div>
+          </div>
+          <mat-chip-set class="case-study-detail__tags" aria-label="Project tags">
+            <mat-chip *ngFor="let tag of vm.caseStudy.tags">{{ tag }}</mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study-detail__content">
+      <div class="case-study-detail__container">
+        <div class="case-study-detail__grid">
+          <article class="case-study-detail__main">
+            <section class="case-study-detail__section">
+              <h2 class="case-study-detail__section-title">Overview</h2>
+              <p class="case-study-detail__text">{{ vm.caseStudy.overview }}</p>
+            </section>
+
+            <section class="case-study-detail__section">
+              <h2 class="case-study-detail__section-title">The Challenge</h2>
+              <p class="case-study-detail__text">{{ vm.caseStudy.challenge }}</p>
+            </section>
+
+            <section class="case-study-detail__section">
+              <h2 class="case-study-detail__section-title">The Solution</h2>
+              <p class="case-study-detail__text">{{ vm.caseStudy.solution }}</p>
+            </section>
+
+            <section class="case-study-detail__section">
+              <h2 class="case-study-detail__section-title">The Results</h2>
+              <p class="case-study-detail__text">{{ vm.caseStudy.results }}</p>
+            </section>
+
+            <section class="case-study-detail__section" *ngIf="vm.caseStudy.screenshots?.length">
+              <h2 class="case-study-detail__section-title">Project Screenshots</h2>
+              <div class="case-study-detail__gallery">
+                <button
+                  *ngFor="let screenshot of vm.caseStudy.screenshots; let i = index"
+                  class="case-study-detail__gallery-item"
+                  (click)="openLightbox(i)"
+                  [attr.aria-label]="'View ' + screenshot.alt"
+                >
+                  <img [src]="screenshot.url" [alt]="screenshot.alt" loading="lazy" />
+                  <span class="case-study-detail__gallery-caption">{{ screenshot.caption }}</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="case-study-detail__section" *ngIf="vm.caseStudy.testimonial">
+              <h2 class="case-study-detail__section-title">Client Testimonial</h2>
+              <blockquote class="case-study-detail__testimonial">
+                <p class="case-study-detail__testimonial-quote">"{{ vm.caseStudy.testimonial.quote }}"</p>
+                <footer class="case-study-detail__testimonial-author">
+                  <strong>{{ vm.caseStudy.testimonial.authorName }}</strong>
+                  <span>{{ vm.caseStudy.testimonial.authorPosition }}, {{ vm.caseStudy.testimonial.authorCompany }}</span>
+                </footer>
+              </blockquote>
+            </section>
+          </article>
+
+          <aside class="case-study-detail__sidebar">
+            <div class="case-study-detail__sidebar-card">
+              <h3 class="case-study-detail__sidebar-title">Key Metrics</h3>
+              <div class="case-study-detail__metrics">
+                <div *ngFor="let metric of vm.caseStudy.metrics" class="case-study-detail__metric">
+                  <span class="case-study-detail__metric-value">{{ metric.value }}</span>
+                  <span class="case-study-detail__metric-label">{{ metric.label }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-study-detail__sidebar-card" *ngIf="vm.caseStudy.technologies?.length">
+              <h3 class="case-study-detail__sidebar-title">Technology Stack</h3>
+              <div class="case-study-detail__tech-groups">
+                <div *ngFor="let tech of vm.caseStudy.technologies" class="case-study-detail__tech-item">
+                  <mat-icon *ngIf="tech.icon">{{ tech.icon }}</mat-icon>
+                  <span class="case-study-detail__tech-name">{{ tech.name }}</span>
+                  <span class="case-study-detail__tech-category">{{ tech.category }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-study-detail__sidebar-card">
+              <h3 class="case-study-detail__sidebar-title">Share This Case Study</h3>
+              <div class="case-study-detail__share">
+                <button
+                  mat-icon-button
+                  aria-label="Share on LinkedIn"
+                  (click)="shareOnLinkedIn(vm.caseStudy.title, vm.caseStudy.link)"
+                >
+                  <mat-icon>business</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  aria-label="Share on Twitter"
+                  (click)="shareOnTwitter(vm.caseStudy.title, vm.caseStudy.link)"
+                >
+                  <mat-icon>chat</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  aria-label="Share on Facebook"
+                  (click)="shareOnFacebook(vm.caseStudy.link)"
+                >
+                  <mat-icon>facebook</mat-icon>
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study-detail__related" *ngIf="vm.caseStudy.relatedCaseStudies?.length">
+      <div class="case-study-detail__container">
+        <h2 class="case-study-detail__related-title">Related Case Studies</h2>
+        <sc-case-study-grid [caseStudies]="vm.caseStudy.relatedCaseStudies" [columns]="2"></sc-case-study-grid>
+      </div>
+    </section>
+
+    <sc-cta-section
+      headline="Ready to Start Your Project?"
+      subheadline="Let's discuss how we can help you achieve similar results."
+      variant="brand"
+    >
+      <sc-button variant="secondary" size="large" routerLink="/contact">Start a Project</sc-button>
+      <sc-button variant="tertiary" size="large" routerLink="/case-studies">View More Case Studies</sc-button>
+    </sc-cta-section>
+
+    <div
+      *ngIf="lightboxOpen && vm.caseStudy.screenshots?.length"
+      class="case-study-detail__lightbox"
+      (click)="closeLightbox()"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image lightbox"
+    >
+      <div class="case-study-detail__lightbox-content" (click)="$event.stopPropagation()">
+        <button
+          class="case-study-detail__lightbox-close"
+          (click)="closeLightbox()"
+          aria-label="Close lightbox"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <button
+          class="case-study-detail__lightbox-nav case-study-detail__lightbox-nav--prev"
+          (click)="previousImage(vm.caseStudy.screenshots.length)"
+          aria-label="Previous image"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <img
+          [src]="vm.caseStudy.screenshots[selectedImageIndex].url"
+          [alt]="vm.caseStudy.screenshots[selectedImageIndex].alt"
+          class="case-study-detail__lightbox-image"
+        />
+        <button
+          class="case-study-detail__lightbox-nav case-study-detail__lightbox-nav--next"
+          (click)="nextImage(vm.caseStudy.screenshots.length)"
+          aria-label="Next image"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        <p class="case-study-detail__lightbox-caption">
+          {{ vm.caseStudy.screenshots[selectedImageIndex].caption }}
+          <span class="case-study-detail__lightbox-counter">
+            {{ selectedImageIndex + 1 }} / {{ vm.caseStudy.screenshots.length }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <sc-footer
+    [tagline]="vm.footerTagline"
+    [columns]="vm.footerColumns"
+    [copyright]="vm.copyright"
+    theme="dark"
+  >
+    <div social class="case-study-detail__social">
+      <a href="https://linkedin.com" aria-label="LinkedIn" class="case-study-detail__social-link">in</a>
+      <a href="https://twitter.com" aria-label="Twitter" class="case-study-detail__social-link">X</a>
+      <a href="https://github.com" aria-label="GitHub" class="case-study-detail__social-link">gh</a>
+    </div>
+    <div legal class="case-study-detail__legal">
+      <a href="/privacy" class="case-study-detail__legal-link">Privacy Policy</a>
+      <a href="/terms" class="case-study-detail__legal-link">Terms of Service</a>
+    </div>
+  </sc-footer>
+</ng-container>

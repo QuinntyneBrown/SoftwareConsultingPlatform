@@ -1,0 +1,221 @@
+<div class="register">
+  <div class="register__container">
+    <div class="register__card">
+      <div class="register__header">
+        <a routerLink="/" class="register__logo">
+          <span class="register__logo-text">Software Consulting Platform</span>
+        </a>
+        <h1 class="register__title">Create Your Account</h1>
+        <p class="register__subtitle">Get started with your free account today</p>
+      </div>
+
+      <ng-container *ngIf="!(success$ | async); else successTemplate">
+        <div class="register__oauth">
+          <button mat-stroked-button class="register__oauth-button" (click)="loginWithGoogle()">
+            <mat-icon>account_circle</mat-icon>
+            <span>Sign up with Google</span>
+          </button>
+          <button mat-stroked-button class="register__oauth-button" (click)="loginWithMicrosoft()">
+            <mat-icon>window</mat-icon>
+            <span>Sign up with Microsoft</span>
+          </button>
+          <button mat-stroked-button class="register__oauth-button" (click)="loginWithGitHub()">
+            <mat-icon>code</mat-icon>
+            <span>Sign up with GitHub</span>
+          </button>
+        </div>
+
+        <mat-divider class="register__divider">
+          <span class="register__divider-text">or sign up with email</span>
+        </mat-divider>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register__form">
+          <div class="register__error" *ngIf="error$ | async as error">
+            <mat-icon>error</mat-icon>
+            <span>{{ error }}</span>
+          </div>
+
+          <mat-form-field appearance="outline" class="register__field">
+            <mat-label>Full name</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="fullName"
+              autocomplete="name"
+              placeholder="John Doe"
+            />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="registerForm.get('fullName')?.hasError('required')">
+              Full name is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('fullName')?.hasError('minlength')">
+              Name must be at least 2 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="register__field">
+            <mat-label>Email address</mat-label>
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="register__field">
+            <mat-label>Company name (optional)</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="companyName"
+              autocomplete="organization"
+              placeholder="Your company"
+            />
+            <mat-icon matSuffix>business</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="register__field">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hidePassword ? 'password' : 'text'"
+              formControlName="password"
+              autocomplete="new-password"
+              placeholder="Create a strong password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              type="button"
+              (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'"
+            >
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+              Password must be at least 8 characters
+            </mat-error>
+          </mat-form-field>
+
+          <div class="register__password-strength" *ngIf="registerForm.get('password')?.value">
+            <div class="register__strength-bar">
+              <div
+                class="register__strength-fill"
+                [class]="'register__strength-fill--' + passwordStrengthClass"
+                [style.width.%]="passwordStrength * 20"
+              ></div>
+            </div>
+            <span class="register__strength-label" [class]="'register__strength-label--' + passwordStrengthClass">
+              {{ passwordStrengthLabel }}
+            </span>
+          </div>
+
+          <div class="register__password-requirements">
+            <p class="register__requirements-title">Password requirements:</p>
+            <ul class="register__requirements-list">
+              <li [class.met]="registerForm.get('password')?.value?.length >= 8">
+                <mat-icon>{{ registerForm.get('password')?.value?.length >= 8 ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+                At least 8 characters
+              </li>
+              <li [class.met]="registerForm.get('password')?.value && /[A-Z]/.test(registerForm.get('password')?.value)">
+                <mat-icon>{{ registerForm.get('password')?.value && /[A-Z]/.test(registerForm.get('password')?.value) ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+                One uppercase letter
+              </li>
+              <li [class.met]="registerForm.get('password')?.value && /[0-9]/.test(registerForm.get('password')?.value)">
+                <mat-icon>{{ registerForm.get('password')?.value && /[0-9]/.test(registerForm.get('password')?.value) ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+                One number
+              </li>
+              <li [class.met]="registerForm.get('password')?.value && /[^A-Za-z0-9]/.test(registerForm.get('password')?.value)">
+                <mat-icon>{{ registerForm.get('password')?.value && /[^A-Za-z0-9]/.test(registerForm.get('password')?.value) ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+                One special character
+              </li>
+            </ul>
+          </div>
+
+          <mat-form-field appearance="outline" class="register__field">
+            <mat-label>Confirm password</mat-label>
+            <input
+              matInput
+              [type]="hideConfirmPassword ? 'password' : 'text'"
+              formControlName="confirmPassword"
+              autocomplete="new-password"
+              placeholder="Confirm your password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              type="button"
+              (click)="hideConfirmPassword = !hideConfirmPassword"
+              [attr.aria-label]="hideConfirmPassword ? 'Show password' : 'Hide password'"
+            >
+              <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+              Please confirm your password
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('passwordMismatch')">
+              Passwords do not match
+            </mat-error>
+          </mat-form-field>
+
+          <div class="register__terms">
+            <mat-checkbox formControlName="acceptTerms" color="primary">
+              I agree to the
+              <a routerLink="/terms" target="_blank">Terms of Service</a>
+              and
+              <a routerLink="/privacy" target="_blank">Privacy Policy</a>
+            </mat-checkbox>
+            <mat-error *ngIf="registerForm.get('acceptTerms')?.touched && registerForm.get('acceptTerms')?.hasError('required')">
+              You must accept the terms to continue
+            </mat-error>
+          </div>
+
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            class="register__submit"
+            [disabled]="isLoading$ | async"
+          >
+            <mat-spinner *ngIf="isLoading$ | async" diameter="20"></mat-spinner>
+            <span *ngIf="!(isLoading$ | async)">Create Account</span>
+          </button>
+        </form>
+      </ng-container>
+
+      <ng-template #successTemplate>
+        <div class="register__success">
+          <mat-icon class="register__success-icon">check_circle</mat-icon>
+          <h2 class="register__success-title">Account Created!</h2>
+          <p class="register__success-text">
+            Your account has been successfully created. You will be redirected to the login page in a few seconds.
+          </p>
+          <a mat-flat-button color="primary" routerLink="/login">Go to Login</a>
+        </div>
+      </ng-template>
+
+      <p class="register__login" *ngIf="!(success$ | async)">
+        Already have an account?
+        <a routerLink="/login" class="register__login-link">Sign in</a>
+      </p>
+    </div>
+
+    <div class="register__footer">
+      <a routerLink="/privacy">Privacy Policy</a>
+      <span>·</span>
+      <a routerLink="/terms">Terms of Service</a>
+    </div>
+  </div>
+</div>

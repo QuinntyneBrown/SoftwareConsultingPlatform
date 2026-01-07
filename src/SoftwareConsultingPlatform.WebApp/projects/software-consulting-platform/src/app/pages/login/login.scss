@@ -1,0 +1,211 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f7f5 0%, #e8e6e3 100%);
+  padding: 24px;
+
+  &__container {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  &__card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 480px) {
+      padding: 24px;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  &__logo {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+
+  &__logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #22252c;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #22252c;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  &__oauth {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: 500;
+    border-color: #e0e0e0;
+
+    &:hover {
+      border-color: #bdbdbd;
+      background: #fafafa;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__divider {
+    position: relative;
+    margin: 24px 0;
+  }
+
+  &__divider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 0 16px;
+    font-size: 13px;
+    color: #999;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #dc2626;
+    font-size: 14px;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__field {
+    width: 100%;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__forgot-link {
+    font-size: 14px;
+    color: #e14658;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__submit {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 8px;
+
+    mat-spinner {
+      display: inline-block;
+    }
+  }
+
+  &__register {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin: 24px 0 0;
+  }
+
+  &__register-link {
+    color: #e14658;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: #999;
+
+    a {
+      color: #666;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      margin: 0 8px;
+    }
+  }
+}
+
+::ng-deep {
+  .login {
+    .mat-mdc-form-field {
+      font-size: 14px;
+    }
+
+    .mat-mdc-checkbox {
+      font-size: 14px;
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline {
+      border-radius: 8px;
+    }
+  }
+}
