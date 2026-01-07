@@ -11,6 +11,8 @@ export * from './lib/hero/hero';
 export * from './lib/navigation/navigation';
 export * from './lib/footer/footer';
 export * from './lib/testimonial/testimonial';
+export * from './lib/testimonial-carousel/testimonial-carousel';
 export * from './lib/cta-section/cta-section';
 export * from './lib/service-listing/service-listing';
 export * from './lib/case-study-grid/case-study-grid';
+export * from './lib/value-proposition/value-proposition';

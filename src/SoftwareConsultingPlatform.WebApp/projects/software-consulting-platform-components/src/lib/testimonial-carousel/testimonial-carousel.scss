@@ -1,0 +1,111 @@
+@use '../styles/tokens' as *;
+
+.sc-testimonial-carousel {
+  padding: $spacing-7xl 0;
+  background: $color-bg-primary;
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+
+  &__title {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    text-align: center;
+    margin-bottom: $spacing-5xl;
+    color: $color-text-primary;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+
+  &__nav {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: $border-radius-full;
+    border: 2px solid $color-border-medium;
+    background: $color-bg-primary;
+    color: $color-text-primary;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    transition: all $transition-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-text-inverse;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
+
+  &__slides {
+    flex: 1;
+    position: relative;
+    min-height: 280px;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-slow, visibility $transition-slow;
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-3xl;
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: $border-radius-full;
+    border: none;
+    background: $color-border-medium;
+    cursor: pointer;
+    transition: all $transition-base;
+    padding: 0;
+
+    &:hover {
+      background: $color-primary-light;
+    }
+
+    &--active {
+      background: $color-primary;
+      transform: scale(1.2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+}

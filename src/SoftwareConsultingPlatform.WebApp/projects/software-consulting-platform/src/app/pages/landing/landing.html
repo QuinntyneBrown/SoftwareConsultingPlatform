@@ -1,0 +1,71 @@
+<ng-container *ngIf="viewModel$ | async as vm">
+  <sc-navigation [links]="vm.navLinks" logoAlt="Software Consulting Platform">
+    <sc-button cta variant="primary" size="medium">Sign In</sc-button>
+  </sc-navigation>
+
+  <main class="landing">
+    <sc-hero
+      [headline]="vm.heroHeadline"
+      [subheadline]="vm.heroSubheadline"
+      alignment="center"
+    >
+      <sc-button variant="primary" size="large">Get Started</sc-button>
+      <sc-button variant="secondary" size="large">Learn More</sc-button>
+    </sc-hero>
+
+    <section class="landing__services">
+      <div class="landing__container">
+        <h2 class="landing__section-title">Our Services</h2>
+        <sc-service-listing [services]="vm.services" [columns]="3"></sc-service-listing>
+      </div>
+    </section>
+
+    <sc-value-proposition
+      sectionTitle="Why Choose Us"
+      [propositions]="vm.valuePropositions"
+      variant="light"
+    ></sc-value-proposition>
+
+    <section class="landing__case-studies">
+      <div class="landing__container">
+        <h2 class="landing__section-title">Featured Case Studies</h2>
+        <sc-case-study-grid [caseStudies]="vm.caseStudies" [columns]="3"></sc-case-study-grid>
+        <div class="landing__view-all">
+          <a href="/case-studies" class="landing__view-all-link">View All Case Studies →</a>
+        </div>
+      </div>
+    </section>
+
+    <sc-testimonial-carousel
+      sectionTitle="What Our Clients Say"
+      [testimonials]="vm.testimonials"
+      [autoPlayInterval]="6000"
+    ></sc-testimonial-carousel>
+
+    <sc-cta-section
+      headline="Ready to Transform Your Business?"
+      subheadline="Let's discuss how we can help you achieve your goals with innovative software solutions."
+      variant="brand"
+    >
+      <sc-button variant="secondary" size="large">Start a Project</sc-button>
+      <sc-button variant="tertiary" size="large">Contact Us</sc-button>
+    </sc-cta-section>
+  </main>
+
+  <sc-footer
+    [tagline]="vm.footerTagline"
+    [columns]="vm.footerColumns"
+    [copyright]="vm.copyright"
+    theme="dark"
+  >
+    <div social class="landing__social">
+      <a href="https://linkedin.com" aria-label="LinkedIn" class="landing__social-link">in</a>
+      <a href="https://twitter.com" aria-label="Twitter" class="landing__social-link">X</a>
+      <a href="https://github.com" aria-label="GitHub" class="landing__social-link">gh</a>
+    </div>
+    <div legal class="landing__legal">
+      <a href="/privacy" class="landing__legal-link">Privacy Policy</a>
+      <a href="/terms" class="landing__legal-link">Terms of Service</a>
+    </div>
+  </sc-footer>
+</ng-container>
