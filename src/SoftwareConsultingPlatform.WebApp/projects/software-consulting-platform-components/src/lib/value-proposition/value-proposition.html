@@ -1,0 +1,12 @@
+<section [class]="'sc-value-proposition sc-value-proposition--' + variant">
+  <div class="sc-value-proposition__container">
+    <h2 *ngIf="sectionTitle" class="sc-value-proposition__title">{{ sectionTitle }}</h2>
+    <div class="sc-value-proposition__grid">
+      <article *ngFor="let prop of propositions" class="sc-value-proposition__item">
+        <div class="sc-value-proposition__icon">{{ prop.icon }}</div>
+        <h3 class="sc-value-proposition__headline">{{ prop.headline }}</h3>
+        <p class="sc-value-proposition__description">{{ prop.description }}</p>
+      </article>
+    </div>
+  </div>
+</section>

@@ -3,12 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve software-consulting-platform",
     "build:components": "ng build software-consulting-platform-components",
     "build:app": "ng build software-consulting-platform",
     "build": "npm run build:components && npm run build:app",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:report": "playwright show-report",
     "storybook": "ng run software-consulting-platform-components:storybook",
     "build-storybook": "ng run software-consulting-platform-components:build-storybook"
   },
@@ -45,6 +48,7 @@
     "@angular/compiler-cli": "^21.0.0",
     "@angular/platform-browser-dynamic": "^21.0.0",
     "@compodoc/compodoc": "^1.1.32",
+    "@playwright/test": "^1.57.0",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-onboarding": "^10.1.11",
@@ -52,6 +56,7 @@
     "@vitest/coverage-v8": "^4.0.16",
     "jsdom": "^27.1.0",
     "ng-packagr": "^21.0.0",
+    "playwright": "^1.57.0",
     "storybook": "^10.1.11",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
