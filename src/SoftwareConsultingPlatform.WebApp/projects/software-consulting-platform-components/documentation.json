@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    headline: 'Transform Your Business',\n    subheadline: 'Let us help you achieve your goals.',\n    variant: 'brand',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    headline: 'Transform Your Business',\r\n    subheadline: 'Let us help you achieve your goals.',\r\n    variant: 'brand',\r\n  },\r\n}"
             },
             {
                 "name": "Centered",
@@ -28,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    headline: 'Welcome to Our Platform',\n    subheadline: 'Discover amazing possibilities.',\n    alignment: 'center',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    headline: 'Welcome to Our Platform',\r\n    subheadline: 'Discover amazing possibilities.',\r\n    alignment: 'center',\r\n  },\r\n}"
             },
             {
                 "name": "Danger",
@@ -38,7 +38,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'danger',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Delete</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'danger',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Delete</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Dark",
@@ -48,7 +48,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    headline: 'Need Help?',\n    subheadline: 'Contact our support team anytime.',\n    variant: 'dark',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    headline: 'Need Help?',\r\n    subheadline: 'Contact our support team anytime.',\r\n    variant: 'dark',\r\n  },\r\n}"
             },
             {
                 "name": "Default",
@@ -58,7 +58,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    title: 'Amazing Project',\n    category: 'Technology',\n    description: 'This is a description of an amazing project that showcases our expertise.',\n    link: '#',\n    linkText: 'Read More',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    title: 'Amazing Project',\r\n    category: 'Technology',\r\n    description: 'This is a description of an amazing project that showcases our expertise.',\r\n    link: '#',\r\n    linkText: 'Read More',\r\n  },\r\n}"
             },
             {
                 "name": "Default",
@@ -68,7 +68,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    headline: 'Build Something Great',\n    subheadline: 'Transform your ideas into reality with our expert development team.',\n    alignment: 'left',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    headline: 'Build Something Great',\r\n    subheadline: 'Transform your ideas into reality with our expert development team.',\r\n    alignment: 'left',\r\n  },\r\n}"
             },
             {
                 "name": "Default",
@@ -78,7 +78,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    quote: 'Working with this team was an absolute pleasure. They delivered beyond our expectations.',\n    authorName: 'Jane Doe',\n    authorPosition: 'CEO',\n    authorCompany: 'TechCorp',\n    rating: 5,\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    quote: 'Working with this team was an absolute pleasure. They delivered beyond our expectations.',\r\n    authorName: 'Jane Doe',\r\n    authorPosition: 'CEO',\r\n    authorCompany: 'TechCorp',\r\n    rating: 5,\r\n  },\r\n}"
             },
             {
                 "name": "Disabled",
@@ -88,7 +88,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    disabled: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    disabled: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "FullWidth",
@@ -98,7 +98,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    fullWidth: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [fullWidth]=\"fullWidth\">Full Width Button</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    fullWidth: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [fullWidth]=\"fullWidth\">Full Width Button</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Large",
@@ -108,7 +108,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'large',\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    size: 'large',\r\n    label: 'Button',\r\n  },\r\n}"
             },
             {
                 "name": "Large",
@@ -118,7 +118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'large',\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Large Button</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    size: 'large',\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Large Button</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Loading",
@@ -128,7 +128,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    loading: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [loading]=\"loading\">Loading</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    loading: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [loading]=\"loading\">Loading</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "LoggedIn",
@@ -138,7 +138,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    user: {\n      name: 'Jane Doe',\n    },\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    user: {\r\n      name: 'Jane Doe',\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "LoggedIn",
@@ -148,7 +148,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\n    await expect(loginButton).toBeInTheDocument();\n    await userEvent.click(loginButton);\n    await expect(loginButton).not.toBeInTheDocument();\n\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\n    await expect(logoutButton).toBeInTheDocument();\n  },\n}"
+                "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\r\n    await expect(loginButton).toBeInTheDocument();\r\n    await userEvent.click(loginButton);\r\n    await expect(loginButton).not.toBeInTheDocument();\r\n\r\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\r\n    await expect(logoutButton).toBeInTheDocument();\r\n  },\r\n}"
             },
             {
                 "name": "LoggedOut",
@@ -178,7 +178,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    backgroundColor: {\n      control: 'color',\n    },\n  },\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args\n  args: { onClick: fn() },\n}"
+                "defaultValue": "{\r\n  title: 'Example/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    backgroundColor: {\r\n      control: 'color',\r\n    },\r\n  },\r\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args\r\n  args: { onClick: fn() },\r\n}"
             },
             {
                 "name": "meta",
@@ -188,7 +188,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<HeaderComponent>",
-                "defaultValue": "{\n  title: 'Example/Header',\n  component: HeaderComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n  args: {\n    onLogin: fn(),\n    onLogout: fn(),\n    onCreateAccount: fn(),\n  },\n}"
+                "defaultValue": "{\r\n  title: 'Example/Header',\r\n  component: HeaderComponent,\r\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\r\n  tags: ['autodocs'],\r\n  parameters: {\r\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\r\n    layout: 'fullscreen',\r\n  },\r\n  args: {\r\n    onLogin: fn(),\r\n    onLogout: fn(),\r\n    onCreateAccount: fn(),\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -198,17 +198,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PageComponent>",
-                "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<Card>",
-                "defaultValue": "{\n  title: 'Components/Card',\n  component: Card,\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  title: 'Example/Page',\r\n  component: PageComponent,\r\n  parameters: {\r\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\r\n    layout: 'fullscreen',\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -218,7 +208,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<Button>",
-                "defaultValue": "{\n  title: 'Components/Button',\n  component: Button,\n  tags: ['autodocs'],\n  argTypes: {\n    variant: {\n      control: { type: 'select' },\n      options: ['primary', 'secondary', 'tertiary', 'danger', 'success'],\n    },\n    size: {\n      control: { type: 'select' },\n      options: ['small', 'medium', 'large'],\n    },\n    disabled: { control: 'boolean' },\n    loading: { control: 'boolean' },\n    fullWidth: { control: 'boolean' },\n  },\n}"
+                "defaultValue": "{\r\n  title: 'Components/Button',\r\n  component: Button,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    variant: {\r\n      control: { type: 'select' },\r\n      options: ['primary', 'secondary', 'tertiary', 'danger', 'success'],\r\n    },\r\n    size: {\r\n      control: { type: 'select' },\r\n      options: ['small', 'medium', 'large'],\r\n    },\r\n    disabled: { control: 'boolean' },\r\n    loading: { control: 'boolean' },\r\n    fullWidth: { control: 'boolean' },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<Card>",
+                "defaultValue": "{\r\n  title: 'Components/Card',\r\n  component: Card,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "meta",
@@ -228,7 +228,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CtaSection>",
-                "defaultValue": "{\n  title: 'Components/CTA Section',\n  component: CtaSection,\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  title: 'Components/CTA Section',\r\n  component: CtaSection,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "meta",
@@ -238,7 +238,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<Hero>",
-                "defaultValue": "{\n  title: 'Components/Hero',\n  component: Hero,\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  title: 'Components/Hero',\r\n  component: Hero,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "meta",
@@ -248,7 +248,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<Testimonial>",
-                "defaultValue": "{\n  title: 'Components/Testimonial',\n  component: Testimonial,\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  title: 'Components/Testimonial',\r\n  component: Testimonial,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "Minimal",
@@ -258,7 +258,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    title: 'Simple Card',\n    description: 'A minimal card design.',\n    variant: 'minimal',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    title: 'Simple Card',\r\n    description: 'A minimal card design.',\r\n    variant: 'minimal',\r\n  },\r\n}"
             },
             {
                 "name": "preview",
@@ -268,7 +268,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\r\n  parameters: {\r\n    controls: {\r\n      matchers: {\r\n       color: /(background|color)$/i,\r\n       date: /Date$/i,\r\n      },\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -278,7 +278,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    primary: true,\r\n    label: 'Button',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -288,7 +288,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'primary',\n    size: 'medium',\n    disabled: false,\n    loading: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\" [loading]=\"loading\">Primary Button</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    size: 'medium',\r\n    disabled: false,\r\n    loading: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\" [loading]=\"loading\">Primary Button</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Secondary",
@@ -298,7 +298,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Button',\r\n  },\r\n}"
             },
             {
                 "name": "Secondary",
@@ -308,7 +308,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'secondary',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Secondary Button</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'secondary',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Secondary Button</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Small",
@@ -318,7 +318,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    size: 'small',\r\n    label: 'Button',\r\n  },\r\n}"
             },
             {
                 "name": "Small",
@@ -328,7 +328,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'small',\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Small</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    size: 'small',\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Small</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Standard",
@@ -338,7 +338,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    headline: 'Ready to Get Started?',\n    subheadline: 'Join thousands of satisfied customers today.',\n    variant: 'standard',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    headline: 'Ready to Get Started?',\r\n    subheadline: 'Join thousands of satisfied customers today.',\r\n    variant: 'standard',\r\n  },\r\n}"
             },
             {
                 "name": "Success",
@@ -348,7 +348,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'success',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Success</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'success',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Success</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "Tertiary",
@@ -358,7 +358,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'tertiary',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Tertiary Button</sc-button>',\n  }),\n}"
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'tertiary',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Tertiary Button</sc-button>',\r\n  }),\r\n}"
             },
             {
                 "name": "WithAvatar",
@@ -368,7 +368,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    quote: 'Excellent service and outstanding results!',\n    authorName: 'John Smith',\n    authorPosition: 'CTO',\n    authorCompany: 'InnovateLabs',\n    avatarUrl: 'https://via.placeholder.com/64',\n    rating: 5,\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    quote: 'Excellent service and outstanding results!',\r\n    authorName: 'John Smith',\r\n    authorPosition: 'CTO',\r\n    authorCompany: 'InnovateLabs',\r\n    avatarUrl: 'https://via.placeholder.com/64',\r\n    rating: 5,\r\n  },\r\n}"
             },
             {
                 "name": "WithImage",
@@ -378,7 +378,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl: 'https://via.placeholder.com/400x225',\n    imageAlt: 'Project image',\n    title: 'Web Application',\n    category: 'Development',\n    description: 'A modern web application built with cutting-edge technologies.',\n    link: '#',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    imageUrl: 'https://via.placeholder.com/400x225',\r\n    imageAlt: 'Project image',\r\n    title: 'Web Application',\r\n    category: 'Development',\r\n    description: 'A modern web application built with cutting-edge technologies.',\r\n    link: '#',\r\n  },\r\n}"
             }
         ],
         "functions": [],
@@ -420,8 +420,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<Card>",
-                "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
+                "rawtype": "StoryObj<Button>",
+                "file": "projects/software-consulting-platform-components/src/lib/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -431,8 +431,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<Button>",
-                "file": "projects/software-consulting-platform-components/src/lib/button/button.stories.ts",
+                "rawtype": "StoryObj<Card>",
+                "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -483,7 +483,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    headline: 'Transform Your Business',\n    subheadline: 'Let us help you achieve your goals.',\n    variant: 'brand',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    headline: 'Transform Your Business',\r\n    subheadline: 'Let us help you achieve your goals.',\r\n    variant: 'brand',\r\n  },\r\n}"
                 },
                 {
                     "name": "Dark",
@@ -493,7 +493,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    headline: 'Need Help?',\n    subheadline: 'Contact our support team anytime.',\n    variant: 'dark',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    headline: 'Need Help?',\r\n    subheadline: 'Contact our support team anytime.',\r\n    variant: 'dark',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -503,7 +503,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CtaSection>",
-                    "defaultValue": "{\n  title: 'Components/CTA Section',\n  component: CtaSection,\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  title: 'Components/CTA Section',\r\n  component: CtaSection,\r\n  tags: ['autodocs'],\r\n}"
                 },
                 {
                     "name": "Standard",
@@ -513,7 +513,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    headline: 'Ready to Get Started?',\n    subheadline: 'Join thousands of satisfied customers today.',\n    variant: 'standard',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    headline: 'Ready to Get Started?',\r\n    subheadline: 'Join thousands of satisfied customers today.',\r\n    variant: 'standard',\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/lib/hero/hero.stories.ts": [
@@ -525,7 +525,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    headline: 'Welcome to Our Platform',\n    subheadline: 'Discover amazing possibilities.',\n    alignment: 'center',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    headline: 'Welcome to Our Platform',\r\n    subheadline: 'Discover amazing possibilities.',\r\n    alignment: 'center',\r\n  },\r\n}"
                 },
                 {
                     "name": "Default",
@@ -535,7 +535,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    headline: 'Build Something Great',\n    subheadline: 'Transform your ideas into reality with our expert development team.',\n    alignment: 'left',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    headline: 'Build Something Great',\r\n    subheadline: 'Transform your ideas into reality with our expert development team.',\r\n    alignment: 'left',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -545,7 +545,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<Hero>",
-                    "defaultValue": "{\n  title: 'Components/Hero',\n  component: Hero,\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  title: 'Components/Hero',\r\n  component: Hero,\r\n  tags: ['autodocs'],\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/lib/button/button.stories.ts": [
@@ -557,7 +557,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    variant: 'danger',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Delete</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'danger',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Delete</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Disabled",
@@ -567,7 +567,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    disabled: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    disabled: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "FullWidth",
@@ -577,7 +577,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    fullWidth: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [fullWidth]=\"fullWidth\">Full Width Button</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    fullWidth: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [fullWidth]=\"fullWidth\">Full Width Button</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Large",
@@ -587,7 +587,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'large',\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Large Button</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    size: 'large',\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Large Button</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Loading",
@@ -597,7 +597,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    loading: true,\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [loading]=\"loading\">Loading</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    loading: true,\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [loading]=\"loading\">Loading</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "meta",
@@ -607,7 +607,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<Button>",
-                    "defaultValue": "{\n  title: 'Components/Button',\n  component: Button,\n  tags: ['autodocs'],\n  argTypes: {\n    variant: {\n      control: { type: 'select' },\n      options: ['primary', 'secondary', 'tertiary', 'danger', 'success'],\n    },\n    size: {\n      control: { type: 'select' },\n      options: ['small', 'medium', 'large'],\n    },\n    disabled: { control: 'boolean' },\n    loading: { control: 'boolean' },\n    fullWidth: { control: 'boolean' },\n  },\n}"
+                    "defaultValue": "{\r\n  title: 'Components/Button',\r\n  component: Button,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    variant: {\r\n      control: { type: 'select' },\r\n      options: ['primary', 'secondary', 'tertiary', 'danger', 'success'],\r\n    },\r\n    size: {\r\n      control: { type: 'select' },\r\n      options: ['small', 'medium', 'large'],\r\n    },\r\n    disabled: { control: 'boolean' },\r\n    loading: { control: 'boolean' },\r\n    fullWidth: { control: 'boolean' },\r\n  },\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -617,7 +617,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    variant: 'primary',\n    size: 'medium',\n    disabled: false,\n    loading: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\" [loading]=\"loading\">Primary Button</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    size: 'medium',\r\n    disabled: false,\r\n    loading: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\" [loading]=\"loading\">Primary Button</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Secondary",
@@ -627,7 +627,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    variant: 'secondary',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Secondary Button</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'secondary',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Secondary Button</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Small",
@@ -637,7 +637,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'small',\n    variant: 'primary',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Small</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    size: 'small',\r\n    variant: 'primary',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Small</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Success",
@@ -647,7 +647,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    variant: 'success',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Success</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'success',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Success</sc-button>',\r\n  }),\r\n}"
                 },
                 {
                     "name": "Tertiary",
@@ -657,7 +657,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    variant: 'tertiary',\n    size: 'medium',\n  },\n  render: (args) => ({\n    props: args,\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Tertiary Button</sc-button>',\n  }),\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'tertiary',\r\n    size: 'medium',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: '<sc-button [variant]=\"variant\" [size]=\"size\">Tertiary Button</sc-button>',\r\n  }),\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/lib/card/card.stories.ts": [
@@ -669,7 +669,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    title: 'Amazing Project',\n    category: 'Technology',\n    description: 'This is a description of an amazing project that showcases our expertise.',\n    link: '#',\n    linkText: 'Read More',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    title: 'Amazing Project',\r\n    category: 'Technology',\r\n    description: 'This is a description of an amazing project that showcases our expertise.',\r\n    link: '#',\r\n    linkText: 'Read More',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -679,7 +679,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<Card>",
-                    "defaultValue": "{\n  title: 'Components/Card',\n  component: Card,\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  title: 'Components/Card',\r\n  component: Card,\r\n  tags: ['autodocs'],\r\n}"
                 },
                 {
                     "name": "Minimal",
@@ -689,7 +689,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    title: 'Simple Card',\n    description: 'A minimal card design.',\n    variant: 'minimal',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    title: 'Simple Card',\r\n    description: 'A minimal card design.',\r\n    variant: 'minimal',\r\n  },\r\n}"
                 },
                 {
                     "name": "WithImage",
@@ -699,7 +699,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl: 'https://via.placeholder.com/400x225',\n    imageAlt: 'Project image',\n    title: 'Web Application',\n    category: 'Development',\n    description: 'A modern web application built with cutting-edge technologies.',\n    link: '#',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    imageUrl: 'https://via.placeholder.com/400x225',\r\n    imageAlt: 'Project image',\r\n    title: 'Web Application',\r\n    category: 'Development',\r\n    description: 'A modern web application built with cutting-edge technologies.',\r\n    link: '#',\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/lib/testimonial/testimonial.stories.ts": [
@@ -711,7 +711,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    quote: 'Working with this team was an absolute pleasure. They delivered beyond our expectations.',\n    authorName: 'Jane Doe',\n    authorPosition: 'CEO',\n    authorCompany: 'TechCorp',\n    rating: 5,\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    quote: 'Working with this team was an absolute pleasure. They delivered beyond our expectations.',\r\n    authorName: 'Jane Doe',\r\n    authorPosition: 'CEO',\r\n    authorCompany: 'TechCorp',\r\n    rating: 5,\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -721,7 +721,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<Testimonial>",
-                    "defaultValue": "{\n  title: 'Components/Testimonial',\n  component: Testimonial,\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  title: 'Components/Testimonial',\r\n  component: Testimonial,\r\n  tags: ['autodocs'],\r\n}"
                 },
                 {
                     "name": "WithAvatar",
@@ -731,7 +731,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    quote: 'Excellent service and outstanding results!',\n    authorName: 'John Smith',\n    authorPosition: 'CTO',\n    authorCompany: 'InnovateLabs',\n    avatarUrl: 'https://via.placeholder.com/64',\n    rating: 5,\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    quote: 'Excellent service and outstanding results!',\r\n    authorName: 'John Smith',\r\n    authorPosition: 'CTO',\r\n    authorCompany: 'InnovateLabs',\r\n    avatarUrl: 'https://via.placeholder.com/64',\r\n    rating: 5,\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/stories/button.stories.ts": [
@@ -743,7 +743,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'large',\n    label: 'Button',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    size: 'large',\r\n    label: 'Button',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -753,7 +753,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    backgroundColor: {\n      control: 'color',\n    },\n  },\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args\n  args: { onClick: fn() },\n}"
+                    "defaultValue": "{\r\n  title: 'Example/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    backgroundColor: {\r\n      control: 'color',\r\n    },\r\n  },\r\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args\r\n  args: { onClick: fn() },\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -763,7 +763,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    primary: true,\r\n    label: 'Button',\r\n  },\r\n}"
                 },
                 {
                     "name": "Secondary",
@@ -773,7 +773,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Button',\r\n  },\r\n}"
                 },
                 {
                     "name": "Small",
@@ -783,7 +783,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    size: 'small',\r\n    label: 'Button',\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/stories/header.stories.ts": [
@@ -795,7 +795,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    user: {\n      name: 'Jane Doe',\n    },\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    user: {\r\n      name: 'Jane Doe',\r\n    },\r\n  },\r\n}"
                 },
                 {
                     "name": "LoggedOut",
@@ -815,7 +815,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<HeaderComponent>",
-                    "defaultValue": "{\n  title: 'Example/Header',\n  component: HeaderComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n  args: {\n    onLogin: fn(),\n    onLogout: fn(),\n    onCreateAccount: fn(),\n  },\n}"
+                    "defaultValue": "{\r\n  title: 'Example/Header',\r\n  component: HeaderComponent,\r\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\r\n  tags: ['autodocs'],\r\n  parameters: {\r\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\r\n    layout: 'fullscreen',\r\n  },\r\n  args: {\r\n    onLogin: fn(),\r\n    onLogout: fn(),\r\n    onCreateAccount: fn(),\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/src/stories/page.stories.ts": [
@@ -827,7 +827,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\n    await expect(loginButton).toBeInTheDocument();\n    await userEvent.click(loginButton);\n    await expect(loginButton).not.toBeInTheDocument();\n\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\n    await expect(logoutButton).toBeInTheDocument();\n  },\n}"
+                    "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\r\n    await expect(loginButton).toBeInTheDocument();\r\n    await userEvent.click(loginButton);\r\n    await expect(loginButton).not.toBeInTheDocument();\r\n\r\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\r\n    await expect(logoutButton).toBeInTheDocument();\r\n  },\r\n}"
                 },
                 {
                     "name": "LoggedOut",
@@ -847,7 +847,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PageComponent>",
-                    "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
+                    "defaultValue": "{\r\n  title: 'Example/Page',\r\n  component: PageComponent,\r\n  parameters: {\r\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\r\n    layout: 'fullscreen',\r\n  },\r\n}"
                 }
             ],
             "projects/software-consulting-platform-components/.storybook/preview.ts": [
@@ -859,7 +859,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\r\n  parameters: {\r\n    controls: {\r\n      matchers: {\r\n       color: /(background|color)$/i,\r\n       date: /Date$/i,\r\n      },\r\n    },\r\n  },\r\n}"
                 }
             ]
         },
@@ -905,19 +905,6 @@
                     "kind": 184
                 }
             ],
-            "projects/software-consulting-platform-components/src/lib/card/card.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<Card>",
-                    "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/software-consulting-platform-components/src/lib/button/button.stories.ts": [
                 {
                     "name": "Story",
@@ -925,6 +912,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<Button>",
                     "file": "projects/software-consulting-platform-components/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/software-consulting-platform-components/src/lib/card/card.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<Card>",
+                    "file": "projects/software-consulting-platform-components/src/lib/card/card.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
