@@ -7,52 +7,40 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
+  pull-requests: write
 
 jobs:
-  deploy:
-    name: Deploy to Azure Static Web App
+  build_and_deploy:
+    name: Build and Deploy to Azure Static Web App
     runs-on: ubuntu-latest
-    environment: production
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
-      - name: Setup Azure Developer CLI
-        uses: Azure/setup-azd@v1.0.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: src/SoftwareConsultingPlatform.WebApp/package-lock.json
 
-      - name: Log in with Azure (Federated Credentials)
-        if: ${{ vars.AZURE_CLIENT_ID != '' }}
-        run: |
-          azd auth login \
-            --client-id "$AZURE_CLIENT_ID" \
-            --federated-credential-provider "github" \
-            --tenant-id "$AZURE_TENANT_ID"
-        env:
-          AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
-          AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      - name: Install dependencies
+        working-directory: src/SoftwareConsultingPlatform.WebApp
+        run: npm ci
 
-      - name: Log in with Azure (Client Credentials)
-        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
-        run: |
-          CLIENT_ID=$(echo "$AZURE_CREDENTIALS" | jq -r '.clientId')
-          CLIENT_SECRET=$(echo "$AZURE_CREDENTIALS" | jq -r '.clientSecret')
-          TENANT_ID=$(echo "$AZURE_CREDENTIALS" | jq -r '.tenantId')
-          
-          echo "::add-mask::$CLIENT_SECRET"
-          
-          azd auth login \
-            --client-id "$CLIENT_ID" \
-            --client-secret "$CLIENT_SECRET" \
-            --tenant-id "$TENANT_ID"
-        env:
-          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Build Angular application
+        working-directory: src/SoftwareConsultingPlatform.WebApp
+        run: npm run build
 
-      - name: Provision and Deploy
-        run: azd up --no-prompt
-        env:
-          AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
-          AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
-          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "src/SoftwareConsultingPlatform.WebApp/dist/software-consulting-platform/browser"
+          skip_app_build: true
