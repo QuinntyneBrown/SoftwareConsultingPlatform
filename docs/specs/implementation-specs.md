@@ -231,7 +231,7 @@ builder.Services.AddControllers()
 ## 6. Frontend Requirements
 
 ### 6.1 Project Identity
-**REQ-FE-001**: The frontend SHALL be named `SoftwareConsultingPlatform.WebApp` (located at `src\SoftwareConsultingPlatform.WebApp`).
+**REQ-FE-001**: The frontend SHALL be named `Ui` (located at `src\Ui`).
 
 **REQ-FE-002**: The frontend SHALL be configured as an Angular workspace with projects.
 
@@ -288,7 +288,7 @@ header.component.ts
 ```
 
 ### 6.5 Folder Structure
-**REQ-FE-014**: The e2e folder SHALL be located at `src/SoftwareConsultingPlatform.WebApp/projects/SoftwareConsultingPlatform/src/e2e`.
+**REQ-FE-014**: The e2e folder SHALL be located at `src/Ui/projects/SoftwareConsultingPlatform/src/e2e`.
 
 **REQ-FE-015**: The frontend SHALL contain a folder named `pages` for components that can appear in the `<router-outlet>`.
 

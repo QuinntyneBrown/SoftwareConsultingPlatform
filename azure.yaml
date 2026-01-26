@@ -7,7 +7,7 @@ infra:
   module: main
 services:
   web:
-    project: src/SoftwareConsultingPlatform.WebApp
+    project: src/Ui
     dist: dist/software-consulting-platform/browser
     language: ts
     host: staticwebapp

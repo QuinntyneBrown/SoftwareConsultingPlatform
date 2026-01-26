@@ -37,7 +37,7 @@ The backend follows a three-layer architecture:
 
 Modern Angular workspace with Material Design 3:
 
-- **Location**: `src/SoftwareConsultingPlatform.WebApp`
+- **Location**: `src/Ui`
 - **State Management**: RxJS-based reactive state (no NgRx, no Signals)
 - **UI Components**: Angular Material with async pipe pattern
 - **Testing**: Jest for unit tests, Playwright for E2E tests
@@ -88,7 +88,7 @@ Modern Angular workspace with Material Design 3:
 
 3. **Frontend Setup**
    ```bash
-   cd src/SoftwareConsultingPlatform.WebApp
+   cd src/Ui
    npm install
    npm start
    ```
@@ -163,8 +163,8 @@ SoftwareConsultingPlatform/
 │   │   ├── Data/                                # EF Core DbContext
 │   │   ├── Migrations/                          # EF Core migrations
 │   │   └── Configurations/                      # Entity configurations
-│   └── SoftwareConsultingPlatform.WebApp/       # Angular frontend
-│       └── projects/SoftwareConsultingPlatform/ # Angular project
+│   └── Ui/                                      # Angular frontend
+│       └── projects/software-consulting-platform/ # Angular project
 │           ├── src/
 │           │   ├── pages/                       # Routable page components
 │           │   ├── components/                  # Reusable components
@@ -199,13 +199,13 @@ dotnet test
 
 ### Frontend Unit Tests
 ```bash
-cd src/SoftwareConsultingPlatform.WebApp
+cd src/Ui
 npm test
 ```
 
 ### E2E Tests
 ```bash
-cd src/SoftwareConsultingPlatform.WebApp
+cd src/Ui
 npm run e2e
 ```
 

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>softwareconsultingplatform-apphost</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.Orchestration.win-arm64" Version="9.3.0" />
+    <PackageReference Include="Aspire.Dashboard.Sdk.win-arm64" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiGateway\SoftwareConsultingPlatform.ApiGateway\SoftwareConsultingPlatform.ApiGateway.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\Identity\SoftwareConsultingPlatform.Identity.Api\SoftwareConsultingPlatform.Identity.Api.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\Tenant\SoftwareConsultingPlatform.Tenant.Api\SoftwareConsultingPlatform.Tenant.Api.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\Services\SoftwareConsultingPlatform.Services.Api\SoftwareConsultingPlatform.Services.Api.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\CaseStudies\SoftwareConsultingPlatform.CaseStudies.Api\SoftwareConsultingPlatform.CaseStudies.Api.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\Content\SoftwareConsultingPlatform.Content.Api\SoftwareConsultingPlatform.Content.Api.csproj" IsAspireProjectResource="true" />
+    <ProjectReference Include="..\Services\Notification\SoftwareConsultingPlatform.Notification.Api\SoftwareConsultingPlatform.Notification.Api.csproj" IsAspireProjectResource="true" />
+  </ItemGroup>
+
+</Project>

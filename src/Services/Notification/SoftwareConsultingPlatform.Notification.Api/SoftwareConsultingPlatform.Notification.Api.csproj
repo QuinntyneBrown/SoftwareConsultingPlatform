@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+    <PackageReference Include="MailKit" Version="4.3.0" />
+    <PackageReference Include="RazorLight" Version="2.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SoftwareConsultingPlatform.ServiceDefaults\SoftwareConsultingPlatform.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Shared.Messages\Shared.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Shared.Contracts\Shared.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Shared.Core\Shared.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\**\*.cshtml" />
+  </ItemGroup>
+</Project>

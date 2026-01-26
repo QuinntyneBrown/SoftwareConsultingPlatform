@@ -1,0 +1,191 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: scp-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: scp-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: scp-sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      MSSQL_PID: "Developer"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Passw0rd -Q 'SELECT 1' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  identity-service:
+    build:
+      context: ..
+      dockerfile: docker/identity-service.Dockerfile
+    container_name: scp-identity
+    ports:
+      - "5101:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__identity-db=Server=sqlserver;Database=IdentityDb;User=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+      - ConnectionStrings__cache=redis:6379
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  tenant-service:
+    build:
+      context: ..
+      dockerfile: docker/tenant-service.Dockerfile
+    container_name: scp-tenant
+    ports:
+      - "5102:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__tenant-db=Server=sqlserver;Database=TenantDb;User=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+      - ConnectionStrings__cache=redis:6379
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  services-service:
+    build:
+      context: ..
+      dockerfile: docker/services-service.Dockerfile
+    container_name: scp-services
+    ports:
+      - "5103:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__services-db=Server=sqlserver;Database=ServicesDb;User=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+      - ConnectionStrings__cache=redis:6379
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  casestudies-service:
+    build:
+      context: ..
+      dockerfile: docker/casestudies-service.Dockerfile
+    container_name: scp-casestudies
+    ports:
+      - "5104:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__casestudies-db=Server=sqlserver;Database=CaseStudiesDb;User=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+      - ConnectionStrings__cache=redis:6379
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  content-service:
+    build:
+      context: ..
+      dockerfile: docker/content-service.Dockerfile
+    container_name: scp-content
+    ports:
+      - "5105:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__content-db=Server=sqlserver;Database=ContentDb;User=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+      - ConnectionStrings__cache=redis:6379
+      - Services__ServicesService=http://services-service:8080
+      - Services__CaseStudiesService=http://casestudies-service:8080
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  notification-service:
+    build:
+      context: ..
+      dockerfile: docker/notification-service.Dockerfile
+    container_name: scp-notification
+    ports:
+      - "5106:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__messaging=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  api-gateway:
+    build:
+      context: ..
+      dockerfile: docker/api-gateway.Dockerfile
+    container_name: scp-gateway
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ReverseProxy__Clusters__identity-cluster__Destinations__identity-service__Address=http://identity-service:8080
+      - ReverseProxy__Clusters__tenant-cluster__Destinations__tenant-service__Address=http://tenant-service:8080
+      - ReverseProxy__Clusters__services-cluster__Destinations__services-service__Address=http://services-service:8080
+      - ReverseProxy__Clusters__casestudies-cluster__Destinations__casestudies-service__Address=http://casestudies-service:8080
+      - ReverseProxy__Clusters__content-cluster__Destinations__content-service__Address=http://content-service:8080
+    depends_on:
+      - identity-service
+      - tenant-service
+      - services-service
+      - casestudies-service
+      - content-service
+
+volumes:
+  rabbitmq-data:
+  redis-data:
+  sqlserver-data:
